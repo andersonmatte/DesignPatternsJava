@@ -1,4 +1,4 @@
-# Desing Patterns em Java
+# Design Patterns em Java
 
 ![alt text](https://github.com/andersonmatte/DesingPatternsJava/blob/main/java.png)
 
