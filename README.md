@@ -1,16 +1,32 @@
 # DesingPatternsJava
-### Exemplo de Todos os Design Patterns em Java
+## Exemplo de Todos os Design Patterns em Java
+
+### Padrões de Criação
+```diff
++ Factory Method
+- Encapsular a classe na criação de objetos de um determinado tipo.
+
++ Abstract Factory
+- Encapsular a classe na criação de objetos de um diversas famílias.
+
++ Builder
+- Separar a construção do objeto de sua representação.
+
++ Prototype
+- Criação de objetos por cópias de objetos já existentes.
+
++ Singlenton
+- Disponibilizar uma única instância de classe e com modo de recuperação.
+
++ Multiton
+- Disponibilizar uma quantidade ilimitada de instâncias de classe e com modo de recuperação.
+
++ Object Pool
+- Reaproveitamento de objetos.
+```
+### Padrões Estruturais
 
 ```diff
-Padrões de criação
-+Factory Method
-- Descriução
-+ Abstract Factory
-+ Builder
-+ Prototype
-+ Singlenton
-+ Multiton
-+ Object Pool
 + Adapter
 + Bridge
 + Composite
@@ -19,7 +35,16 @@ Padrões de criação
 + Front Controller
 + Flyweight
 + Proxy
-+ text in green
-! text in orange
-# text in gray
+
+### Padrões Comportamentais
+```diff
++ Command
+- Descriução
++ Iterator
++ Mediator
++ Observer
++ State
++ Strategy
++ Template Method
++ Visitor
 ```
