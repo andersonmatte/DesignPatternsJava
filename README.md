@@ -55,12 +55,26 @@
 ### Padrões Comportamentais
 ```diff
 + Command
-- Descriução
+# Controle de chamadas de cada reuisição, podendo desfazer, enfileirar ou registra operações.
+
 + Iterator
+# Modo de percorrer uma coleção sem exposição da estrutura da coleção.
+
 + Mediator
+# Mediar a comunicação entre objetos diminuindo as ligações entre eles.
+
 + Observer
+# Mecanismo de reação sensível a mudanças em determinados obejtos.
+
 + State
+# Com base no estado de um determinado objeto seu comportamento poderá ser alterado.
+
 + Strategy
+# Mudança de estratágia quanto ao uso de algoritimos de um determinado sistema.
+
 + Template Method
+# Definição da ordem dos passos de um determinado problema
+
 + Visitor
+# Alterações simples em uma determinada coleção de objetos.
 ```
