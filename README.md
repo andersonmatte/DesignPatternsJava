@@ -58,7 +58,7 @@
 @@ Controle de chamadas de cada reuisição, podendo desfazer, enfileirar ou registra operações.@@
 
 + Iterator
-@@ Modo de percorrer uma coleção sem exposição da estrutura da coleção.
+@ Modo de percorrer uma coleção sem exposição da estrutura da coleção. @
 
 + Mediator
 @@ Mediar a comunicação entre objetos diminuindo as ligações entre eles.
