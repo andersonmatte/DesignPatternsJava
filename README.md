@@ -1,6 +1,6 @@
 # Desing Patterns em Java
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/andersonmatte/DesingPatternsJava/blob/main/java.png)
 
 ## Exemplo de Todos os Design Patterns em Java
 
