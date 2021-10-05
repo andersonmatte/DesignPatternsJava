@@ -28,7 +28,7 @@
 
 ```diff
 + Adapter
-! Substituição de objeto por outro com interfaces distintas.
+! Substituição de objeto por outro com factoryMethody.interfaces distintas.
 
 + Bridge
 ! Dividir a abrstração, produzindo tipos de objetos diferentes.
@@ -40,7 +40,7 @@
 ! De forma dinâmica adicionar comportamento a um objeto.
 
 + Facade
-! Disponibilizar uma interface simples para várias interfaces.
+! Disponibilizar uma interface simples para várias factoryMethody.interfaces.
 
 + Front Controller
 ! Centralizador de requisições WEB

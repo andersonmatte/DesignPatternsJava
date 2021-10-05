@@ -1,6 +1,8 @@
-import emissor.EmissorEmail;
-import emissor.EmissorSMS;
-import interfaces.Emissor;
+package factoryMethody;
+
+import factoryMethody.emissor.EmissorEmail;
+import factoryMethody.emissor.EmissorSMS;
+import factoryMethody.interfaces.Emissor;
 import org.junit.Test;
 
 /**

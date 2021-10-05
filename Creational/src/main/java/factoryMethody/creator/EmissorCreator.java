@@ -1,8 +1,8 @@
-package creator;
+package factoryMethody.creator;
 
-import emissor.EmissorEmail;
-import emissor.EmissorSMS;
-import interfaces.Emissor;
+import factoryMethody.emissor.EmissorEmail;
+import factoryMethody.emissor.EmissorSMS;
+import factoryMethody.interfaces.Emissor;
 
 /**
  * @author Anderson Matte

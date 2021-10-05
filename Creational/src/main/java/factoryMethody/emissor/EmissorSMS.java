@@ -1,6 +1,6 @@
-package emissor;
+package factoryMethody.emissor;
 
-import interfaces.Emissor;
+import factoryMethody.interfaces.Emissor;
 
 /**
  * @author Anderson Matte

@@ -1,4 +1,4 @@
-package interfaces;
+package factoryMethody.interfaces;
 
 /**
  * @author Anderson Matte
