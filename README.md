@@ -3,7 +3,7 @@
 
 ```diff
 Padrões de criação
-+ Factory Method
++Factory Method
 - Descriução
 + Abstract Factory
 + Builder
