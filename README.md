@@ -55,7 +55,7 @@
 ### Padrões Comportamentais
 ```diff
 + Command
-@@ Controle de chamadas de cada reuisição, podendo desfazer, enfileirar ou registra operações.
+@@ Controle de chamadas de cada reuisição, podendo desfazer, enfileirar ou registra operações.@@
 
 + Iterator
 @@ Modo de percorrer uma coleção sem exposição da estrutura da coleção.
