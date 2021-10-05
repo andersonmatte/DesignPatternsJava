@@ -1,4 +1,7 @@
-# DesingPatternsJava
+# Desing Patterns em Java
+
+![alt text](http://url/to/img.png)
+
 ## Exemplo de Todos os Design Patterns em Java
 
 ### Padrões de Criação
@@ -7,7 +10,7 @@
 - Encapsular a classe na criação de objetos de um determinado tipo.
 
 + Abstract Factory
-- Encapsular a classe na criação de objetos de um diversas famílias.
+- Encapsular a classe na criação de objetos de diversas famílias.
 
 + Builder
 - Separar a construção do objeto de sua representação.
