@@ -2,7 +2,7 @@
 ### Exemplo de Todos os Design Patterns em Java
 
 ```diff
-- text in red
+- taaa
 + text in green
 ! text in orange
 # text in gray
