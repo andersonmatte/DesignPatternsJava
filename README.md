@@ -28,13 +28,29 @@
 
 ```diff
 + Adapter
+! Substituição de objeto por outro com interfaces distintas.
+
 + Bridge
+! Dividir a abrstração, produzindo tipos de objetos diferentes.
+
 + Composite
+! Agrupamento de objetos, sem distinção entre eles.
+
 + Decorator
+! De forma dinâmica adicionar comportamento a um objeto.
+
 + Facade
+! Disponibilizar uma interface simples para várias interfaces.
+
 + Front Controller
+! Centralizador de requisições WEB
+
 + Flyweight
+! Compartilhamento de objetos de larga escala em termo de uso.
+
 + Proxy
+! Controle de objeto atráves de outro objeto da mesmo interface
+```
 
 ### Padrões Comportamentais
 ```diff
