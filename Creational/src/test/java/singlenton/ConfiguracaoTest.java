@@ -8,7 +8,7 @@ import org.junit.Test;
 public class ConfiguracaoTest {
 
     @Test
-    public void testaConfiguracao(){
+    public void testaConfiguracao() {
         Configuracao configuracao = Configuracao.getInstance();
         System.out.println(configuracao.getProperties("time-zone"));
         System.out.println(configuracao.getProperties("currency-code"));
