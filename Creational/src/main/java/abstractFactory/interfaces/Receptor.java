@@ -5,6 +5,6 @@ package abstractFactory.interfaces;
  */
 public interface Receptor {
 
-    public String recebeBandeiraCartao();
+    String recebeBandeiraCartao();
 
 }

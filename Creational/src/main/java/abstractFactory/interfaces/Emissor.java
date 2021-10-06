@@ -5,5 +5,5 @@ package abstractFactory.interfaces;
  */
 public interface Emissor {
 
-    public Boolean enviaMensagem(String mensagem);
+    Boolean enviaMensagem(String mensagem);
 }
