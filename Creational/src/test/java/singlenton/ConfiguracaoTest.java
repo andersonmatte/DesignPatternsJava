@@ -1,7 +1,6 @@
 package singlenton;
 
 import org.junit.Test;
-import singlenton.configuration.Configuracao;
 
 /**
  * @author Anderson Matte

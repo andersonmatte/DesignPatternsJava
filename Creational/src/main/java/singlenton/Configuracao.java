@@ -1,4 +1,4 @@
-package singlenton.configuration;
+package singlenton;
 
 import java.util.HashMap;
 import java.util.Map;
