@@ -16,9 +16,7 @@ import java.time.LocalDate;
 public class GeradorDeBoletoTest {
 
     BoletoBuilder boletoBuilderBanrisul = new BanrisulBuilder();
-
     BoletoBuilder boletoBuilderItau = new ItauBuilder();
-
     BoletoBuilder boletoBuilderSantander = new SantanderBuilder();
 
     @Test
