@@ -12,14 +12,14 @@ public class ReceptorCreator {
     public static final int VISA = 0;
     public static final int MASTERCARD = 1;
 
-    public Receptor criar(int tipoReceptor){
+    public Receptor criar(int tipoReceptor) {
 
         if (tipoReceptor == VISA) {
             return new ReceptorVisa();
-        } else if (tipoReceptor == MASTERCARD){
+        } else if (tipoReceptor == MASTERCARD) {
             return new ReceptorMasterCard();
         } else {
-            throw  new IllegalArgumentException("Tipo de Emissor não encontrado no sistema.");
+            throw new IllegalArgumentException("Tipo de Emissor não encontrado no sistema.");
         }
     }
 

@@ -15,16 +15,16 @@ public class VisaFactoryTest {
     ComunicadorFactory comunicadorFactory = new VisaFactory();
 
     @Test
-    public void testaEmissor(){
+    public void testaEmissor() {
         String valorDebito = "Valor=356,02";
         Emissor emissor = comunicadorFactory.createEmissor();
         Assert.assertTrue(emissor.enviaMensagem(valorDebito));
     }
 
     @Test
-    public void testaReceptor(){
+    public void testaReceptor() {
         Receptor receptor = comunicadorFactory.createRceptor();
-        Assert.assertEquals( "Mensagem Cartão VISA", receptor.recebeBandeiraCartao());
+        Assert.assertEquals("Mensagem Cartão VISA", receptor.recebeBandeiraCartao());
     }
 
 }

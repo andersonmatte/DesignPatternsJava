@@ -12,14 +12,14 @@ public class EmissorCreator {
     public static final int VISA = 0;
     public static final int MASTERCARD = 1;
 
-    public Emissor criar(int tipoEmissor){
+    public Emissor criar(int tipoEmissor) {
 
         if (tipoEmissor == VISA) {
             return new EmissorVisa();
-        } else if (tipoEmissor == MASTERCARD){
+        } else if (tipoEmissor == MASTERCARD) {
             return new EmissorMasterCard();
         } else {
-            throw  new IllegalArgumentException("Tipo de Emissor não encontrado no sistema.");
+            throw new IllegalArgumentException("Tipo de Emissor não encontrado no sistema.");
         }
     }
 

@@ -9,7 +9,7 @@ public class EmissorMasterCard implements Emissor {
 
     @Override
     public Boolean enviaMensagem(String mensagem) {
-        if (mensagem != null){
+        if (mensagem != null) {
             System.out.println("Enviando Mensagem para o Cartão Mastercard: ");
             System.out.println(mensagem);
             return true;

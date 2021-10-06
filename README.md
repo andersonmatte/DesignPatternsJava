@@ -5,6 +5,7 @@
 ## Exemplo de Todos os Design Patterns em Java
 
 ### Padrões de Criação
+
 ```diff
 + Factory Method
 - Encapsular a classe na criação de objetos de um determinado tipo.
@@ -27,6 +28,7 @@
 + Object Pool
 - Reaproveitamento de objetos.
 ```
+
 ### Padrões Estruturais
 
 ```diff
@@ -56,6 +58,7 @@
 ```
 
 ### Padrões Comportamentais
+
 ```diff
 + Command
 # Controle de chamadas de cada reuisição, podendo desfazer, enfileirar ou registra operações.

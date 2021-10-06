@@ -11,13 +11,13 @@ import org.junit.Test;
 public class EmissorTest {
 
     @Test
-    public void testaEmissorSMS(){
+    public void testaEmissorSMS() {
         Emissor emissorSMS = new EmissorSMS();
         emissorSMS.enviarMensagem("Teste de envio de SMS...");
     }
 
     @Test
-    public void testaEmissorEmail(){
+    public void testaEmissorEmail() {
         Emissor emissorEmail = new EmissorEmail();
         emissorEmail.enviarMensagem("Teste de envio de Email...");
     }

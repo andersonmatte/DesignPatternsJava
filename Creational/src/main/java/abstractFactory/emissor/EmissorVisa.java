@@ -9,7 +9,7 @@ public class EmissorVisa implements Emissor {
 
     @Override
     public Boolean enviaMensagem(String mensagem) {
-        if (mensagem != null){
+        if (mensagem != null) {
             System.out.println("Enviando Mensagem para o Cartão VISA: ");
             System.out.println(mensagem);
             return true;

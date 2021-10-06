@@ -15,16 +15,16 @@ public class MasterCarFactoryTest {
     ComunicadorFactory comunicadorFactory = new MasterCardFactory();
 
     @Test
-    public void testaEmissor(){
+    public void testaEmissor() {
         String valorDebito = "Valor=459,99";
         Emissor emissor = comunicadorFactory.createEmissor();
         Assert.assertTrue(emissor.enviaMensagem(valorDebito));
     }
 
     @Test
-    public void testaReceptor(){
+    public void testaReceptor() {
         Receptor receptor = comunicadorFactory.createRceptor();
-        Assert.assertEquals( "Mensagem Cartão MasterCard", receptor.recebeBandeiraCartao());
+        Assert.assertEquals("Mensagem Cartão MasterCard", receptor.recebeBandeiraCartao());
     }
 
 }

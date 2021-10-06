@@ -48,14 +48,14 @@ public class ItauBoleto implements Boleto {
         return this.nossoNumero = nossoNumero;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Boleto Itaú\n");
-        stringBuilder.append("Sacado: " + this.sacado +"\n");
-        stringBuilder.append("Cedente: " + this.cedente +"\n");
-        stringBuilder.append("Valor: " + this.valor +"\n");
-        stringBuilder.append("Vencimento: " + this.vencimento +"\n");
-        stringBuilder.append("Nosso Número: " + this.nossoNumero +"\n");
+        stringBuilder.append("Sacado: " + this.sacado + "\n");
+        stringBuilder.append("Cedente: " + this.cedente + "\n");
+        stringBuilder.append("Valor: " + this.valor + "\n");
+        stringBuilder.append("Vencimento: " + this.vencimento + "\n");
+        stringBuilder.append("Nosso Número: " + this.nossoNumero + "\n");
         return stringBuilder.toString();
     }
 

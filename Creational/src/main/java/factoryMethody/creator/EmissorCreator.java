@@ -12,14 +12,14 @@ public class EmissorCreator {
     public static final int SMS = 0;
     public static final int EMAIL = 1;
 
-    public Emissor criar(int tipoEmissor){
+    public Emissor criar(int tipoEmissor) {
 
         if (tipoEmissor == SMS) {
             return new EmissorSMS();
-        } else if (tipoEmissor == EMAIL){
+        } else if (tipoEmissor == EMAIL) {
             return new EmissorEmail();
         } else {
-            throw  new IllegalArgumentException("Tipo de Emissor não encontrado no sistema.");
+            throw new IllegalArgumentException("Tipo de Emissor não encontrado no sistema.");
         }
     }
 
