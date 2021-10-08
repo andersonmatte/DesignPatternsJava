@@ -7,7 +7,7 @@
 ### Padrões de Criação
 
 ```diff
-+ Factory Method
++ ![Factory Method] (https://github.com/andersonmatte/DesignPatternsJava/tree/main/Creational/src/main/java/factoryMethody)
 - Encapsular a classe na criação de objetos de um determinado tipo.
 
 + Abstract Factory
