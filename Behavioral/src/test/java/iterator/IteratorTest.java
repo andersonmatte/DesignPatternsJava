@@ -11,26 +11,26 @@ import java.util.Iterator;
 public class IteratorTest {
 
     @Test
-    public void testaIterator(){
+    public void testaIterator() {
         Nomes nomes = new Nomes(this.getNomes());
         Iterator<String> iterator = nomes.iterator();
         iterator.hasNext();
         iterator.remove();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String nome = iterator.next();
             System.out.println(nome);
         }
 
         System.out.println("----------------------");
         System.out.println("Testando o laço.......");
-        for (Object nome: getNomes()) {
+        for (Object nome : getNomes()) {
             System.out.println(nome);
         }
 
     }
 
-    public String[] getNomes(){
+    public String[] getNomes() {
         String[] nomes = new String[5];
         nomes[0] = "Anderson Matte";
         nomes[1] = "Alicia Mendes";
