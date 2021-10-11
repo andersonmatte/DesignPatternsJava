@@ -84,3 +84,4 @@
 + Visitor
 # Alterações simples em uma determinada coleção de objetos.
 ```
+### Fonte de estudos do site https://refactoring.guru/pt-br/design-patterns/java
