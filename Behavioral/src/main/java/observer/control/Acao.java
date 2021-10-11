@@ -24,16 +24,16 @@ public class Acao {
         this.valor = valor;
     }
 
-    public void registraInteressado(AcaoObserver interessado){
+    public void registraInteressado(AcaoObserver interessado) {
         this.interessados.add(interessado);
     }
 
-    public void cancelaInteressado(AcaoObserver interessado){
+    public void cancelaInteressado(AcaoObserver interessado) {
         this.interessados.remove(interessado);
     }
 
-    public void setValor(){
-        for (AcaoObserver interessado: this.interessados) {
+    public void setValor() {
+        for (AcaoObserver interessado : this.interessados) {
             interessado.notificaAlteracao(this);
         }
     }
