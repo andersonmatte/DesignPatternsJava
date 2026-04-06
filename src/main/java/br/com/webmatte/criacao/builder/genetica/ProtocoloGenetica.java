@@ -16,8 +16,8 @@ public class ProtocoloGenetica implements ProtocoloExperimental {
     private Integer duracaoHoras;
     private String metodoAnalise;
 
-    public ProtocoloGenetica(String nomePesquisador, String tipoAmostra, Double volumeAmostra, 
-                           LocalDate dataInicio, Integer duracaoHoras, String metodoAnalise) {
+    public ProtocoloGenetica(String nomePesquisador, String tipoAmostra, Double volumeAmostra,
+                             LocalDate dataInicio, Integer duracaoHoras, String metodoAnalise) {
         this.nomePesquisador = nomePesquisador;
         this.tipoAmostra = tipoAmostra;
         this.volumeAmostra = volumeAmostra;

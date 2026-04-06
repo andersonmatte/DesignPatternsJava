@@ -18,7 +18,7 @@ public class SistemaBioinformaticaFrontController {
 
         try {
             // Roteamento baseado no endpoint
-            String[] partesEndpoint = Class.split("/");
+            String[] partesEndpoint = endpoint.split("/");
             String modulo = partesEndpoint[0];
             String acao = partesEndpoint.length > 1 ? partesEndpoint[1] : EXECUTAR;
 

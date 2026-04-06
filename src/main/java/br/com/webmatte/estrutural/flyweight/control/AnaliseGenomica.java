@@ -2,6 +2,7 @@ package br.com.webmatte.estrutural.flyweight.control;
 
 import br.com.webmatte.estrutural.flyweight.factory.DadoGeneticoFlyweightFactory;
 import br.com.webmatte.estrutural.flyweight.interfaces.DadoGeneticoFlyweight;
+import br.com.webmatte.estrutural.flyweight.temas.DadoProteina;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;

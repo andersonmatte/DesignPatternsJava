@@ -17,7 +17,7 @@ public class TipoSanguineo {
     public static final String TIPO_B = "B";
     public static final String TIPO_AB = "AB";
     public static final String TIPO_O = "O";
-    
+
     private static Map<String, TipoSanguineo> tiposSanguineos = new HashMap<>();
 
     static {

@@ -21,8 +21,8 @@ public class AmostraBiologica implements Prototype<AmostraBiologica> {
     private Set<String> marcadoresGeneticos;
     private String condicaoArmazenamento;
 
-    public AmostraBiologica(String codigo, String tipo, LocalDate dataColeta, 
-                           Set<String> marcadoresGeneticos, String condicaoArmazenamento) {
+    public AmostraBiologica(String codigo, String tipo, LocalDate dataColeta,
+                            Set<String> marcadoresGeneticos, String condicaoArmazenamento) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.dataColeta = dataColeta;

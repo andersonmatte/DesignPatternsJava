@@ -1,8 +1,8 @@
 package br.com.webmatte.criacao.builder.protocolo;
 
-import br.com.webmatte.criacao.builder.genetica.ItauBoleto;
-import br.com.webmatte.criacao.builder.interfaces.ProtocoloExperimental;
+import br.com.webmatte.criacao.builder.genetica.ProtocoloGenetica;
 import br.com.webmatte.criacao.builder.interfaces.ProtocoloBuilder;
+import br.com.webmatte.criacao.builder.interfaces.ProtocoloExperimental;
 
 import java.time.LocalDate;
 
@@ -50,8 +50,8 @@ public class ProtocoloGeneticaBuilder implements ProtocoloBuilder {
 
     @Override
     public ProtocoloExperimental getProtocolo() {
-        return new ProtocoloGenetica(this.nomePesquisador, this.tipoAmostra, this.volumeAmostra, 
-                                    this.dataInicio, this.duracaoHoras, this.metodoAnalise);
+        return new ProtocoloGenetica(this.nomePesquisador, this.tipoAmostra, this.volumeAmostra,
+                this.dataInicio, this.duracaoHoras, this.metodoAnalise);
     }
 
 }

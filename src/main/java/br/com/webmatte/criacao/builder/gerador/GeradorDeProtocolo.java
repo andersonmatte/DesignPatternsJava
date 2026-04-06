@@ -1,7 +1,7 @@
 package br.com.webmatte.criacao.builder.gerador;
 
-import br.com.webmatte.criacao.builder.interfaces.ProtocoloExperimental;
 import br.com.webmatte.criacao.builder.interfaces.ProtocoloBuilder;
+import br.com.webmatte.criacao.builder.interfaces.ProtocoloExperimental;
 
 import java.time.LocalDate;
 
@@ -39,9 +39,9 @@ public class GeradorDeProtocolo {
 
     }
 
-    public ProtocoloExperimental gerarProtocolo(String nomePesquisador, String tipoAmostra, 
-                                               Double volumeAmostra, LocalDate dataInicio, 
-                                               Integer duracaoHoras, String metodoAnalise) {
+    public ProtocoloExperimental gerarProtocolo(String nomePesquisador, String tipoAmostra,
+                                                Double volumeAmostra, LocalDate dataInicio,
+                                                Integer duracaoHoras, String metodoAnalise) {
         this.protocoloBuilder.buildNomePesquisador(nomePesquisador);
         this.protocoloBuilder.buildTipoAmostra(tipoAmostra);
         this.protocoloBuilder.buildVolumeAmostra(volumeAmostra);
