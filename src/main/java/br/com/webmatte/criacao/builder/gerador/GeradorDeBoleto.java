@@ -42,9 +42,7 @@ public class GeradorDeBoleto {
         this.boletoBuilder.buildValor(valor);
         this.boletoBuilder.buildVencimento(vencimento);
         this.boletoBuilder.buildNossoNumero(nossoNumero);
-        Boleto boleto = boletoBuilder.getBoleto();
-        return boleto;
+        return boletoBuilder.getBoleto();
     }
-
 
 }

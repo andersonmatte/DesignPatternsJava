@@ -2,6 +2,9 @@ package br.com.webmatte.comportamental.mediator.control;
 
 import br.com.webmatte.comportamental.mediator.entity.Passageiro;
 import br.com.webmatte.comportamental.mediator.entity.Taxi;
+import br.com.webmatte.comportamental.mediator.exception.TaxiInterruptedException;
+import lombok.Synchronized;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,22 +12,28 @@ import java.util.List;
 /**
  * @author Anderson Matte
  */
+@Slf4j
 public class CentralTaxi {
 
-    private List<Taxi> taxisLivres = new ArrayList<Taxi>();
-    private List<Passageiro> passageirosEspera = new ArrayList<Passageiro>();
+    private List<Taxi> taxisLivres = new ArrayList<>();
+    private List<Passageiro> passageirosEspera = new ArrayList<>();
 
-    public synchronized void adicionaTaxiDisponivel(Taxi taxi) {
-        System.out.println("Taxi " + taxi.getId() + " voltou para a fila.");
+    @Synchronized
+    public void adicionaTaxiDisponivel(Taxi taxi) {
+        log.info("Taxi {} voltou para a fila.", taxi.getId());
         this.taxisLivres.add(taxi);
-        this.notifyAll();
+        synchronized (this) {
+            this.notifyAll();
+        }
     }
 
     public void chamaTaxi(Passageiro passageiro) {
         Taxi taxi = this.esperaTaxi(passageiro);
-        System.out.println("Taxi " + taxi.getId() + " levando o passageiro " + passageiro.getNome());
-        this.taxisLivres.add(taxi);
-        this.notifyAll();
+        log.info("Taxi {} levando o passageiro {}", taxi.getId(), passageiro.getNome());
+        synchronized (this) {
+            this.taxisLivres.add(taxi);
+            this.notifyAll();
+        }
     }
 
     private Taxi esperaTaxi(Passageiro passageiro) {
@@ -34,7 +43,8 @@ public class CentralTaxi {
                 try {
                     this.wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
+                    throw new TaxiInterruptedException("Thread interrupted while waiting for taxi", e);
                 }
             }
             this.passageirosEspera.remove(0);

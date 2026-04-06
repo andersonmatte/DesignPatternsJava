@@ -14,7 +14,7 @@ public abstract class Funcionario implements Atualizavel {
     private String nome;
     private Double salario;
 
-    public Funcionario(String nome, Double salario) {
+    protected Funcionario(String nome, Double salario) {
         this.nome = nome;
         this.salario = salario;
     }

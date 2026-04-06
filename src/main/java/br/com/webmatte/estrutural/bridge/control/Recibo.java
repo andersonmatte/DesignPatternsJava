@@ -3,9 +3,6 @@ package br.com.webmatte.estrutural.bridge.control;
 import br.com.webmatte.estrutural.bridge.interfaces.Documento;
 import br.com.webmatte.estrutural.bridge.interfaces.GeradorDeArquivo;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-
 /**
  * @author Anderson Matte
  */
@@ -25,17 +22,11 @@ public class Recibo implements Documento {
 
     @Override
     public void gerarArquivo() {
-        try {
-            StringBuffer buffer = new StringBuffer();
-            PrintStream printStream = new PrintStream("Recibo.txt");
-            buffer.append("Recibo de Pagamento ");
-            buffer.append("\nEmpresa: " + this.emissor);
-            buffer.append("\nCliente: " + this.favorecido);
-            buffer.append("\nValor " + this.valor);
-            this.geradorDeArquivo.gerar(buffer.toString());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        String buffer = "Recibo de Pagamento " +
+                "\nEmpresa: " + this.emissor +
+                "\nCliente: " + this.favorecido +
+                "\nValor " + this.valor;
+        this.geradorDeArquivo.gerar(buffer);
     }
 
 }

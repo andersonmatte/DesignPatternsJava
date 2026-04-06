@@ -25,24 +25,30 @@ public class Ferias implements Prototype<Ferias> {
         this.chaves = chaves;
     }
 
+    public Ferias(Ferias other) {
+        this.nome = other.nome;
+        this.vencimento = other.vencimento;
+        this.chaves = new HashSet<>(other.chaves); // Deep copy of the Set
+    }
+
+    public static Ferias copyOf(Ferias other) {
+        return new Ferias(other);
+    }
+
     @Override
-    public Ferias clone() {
-        String nome = "Cópia das férias:" + this.nome;
-        LocalDate vencimento = (LocalDate) this.vencimento;
-        Set<String> chaves = new HashSet<>(this.chaves);
-        Ferias ferias = new Ferias(nome, vencimento, chaves);
-        return ferias;
+    public Ferias copy() {
+        return new Ferias(this);
     }
 
     public String toString() {
-        StringBuffer buffer = new StringBuffer();
+        var buffer = new StringBuilder();
         buffer.append("-----------------------\n");
         buffer.append(" Tipo de Férias: ");
-        buffer.append(this.nome + "\n");
-        buffer.append(" Vencimento: " + this.vencimento);
+        buffer.append(this.nome).append("\n");
+        buffer.append(" Vencimento: ").append(this.vencimento);
         buffer.append(" Chaves: \n");
-        for (String chaves : this.chaves) {
-            buffer.append(" - " + chaves + "\n");
+        for (String keys : this.chaves) {
+            buffer.append(" - ").append(keys).append("\n");
         }
         buffer.append("-----------------------\n");
         return buffer.toString();

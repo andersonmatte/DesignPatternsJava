@@ -9,11 +9,11 @@ import java.util.Iterator;
  */
 public class Nomes implements Iterable<String> {
 
-    private String[] nomes;
+    private final String[] nomeslistaNomes;
     private int length;
 
-    public Nomes(String[] nomes) {
-        this.nomes = nomes;
+    public Nomes(String[] nomeslistaNomes) {
+        this.nomeslistaNomes = nomeslistaNomes;
     }
 
     @Override
@@ -25,11 +25,12 @@ public class Nomes implements Iterable<String> {
 
         private int i = 0;
 
+        @Override
         public void remove() {
-            Nomes.this.nomes[i] = null;
+            Nomes.this.nomeslistaNomes[i] = null;
 
             for (int j = i; (j + i) < Nomes.this.length; j++) {
-                Nomes.this.nomes[j] = Nomes.this.nomes[j + 1];
+                Nomes.this.nomeslistaNomes[j] = Nomes.this.nomeslistaNomes[j + 1];
             }
             Nomes.this.length--;
         }
@@ -41,7 +42,10 @@ public class Nomes implements Iterable<String> {
 
         @Override
         public String next() {
-            return Nomes.this.nomes[i++];
+            if (!hasNext()) {
+                throw new java.util.NoSuchElementException("No more elements in the iteration");
+            }
+            return Nomes.this.nomeslistaNomes[i++];
         }
     }
 

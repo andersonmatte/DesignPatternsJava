@@ -4,7 +4,7 @@ import br.com.webmatte.comportamental.mediator.control.CentralTaxi;
 import lombok.Getter;
 import lombok.Setter;
 
-import static java.lang.Math.random;
+import java.util.Random;
 
 /**
  * @author Anderson Matte
@@ -13,6 +13,7 @@ import static java.lang.Math.random;
 @Setter
 public class Taxi {
 
+    private static final Random random = new Random();
     private static int contador = 0;
     private CentralTaxi centralTaxi;
     private Integer id;
@@ -24,8 +25,9 @@ public class Taxi {
 
     public void atendePassageiro() {
         try {
-            Thread.sleep((long) (random() * 3000.0));
+            Thread.sleep(random.nextInt(3000));
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
         }
         this.centralTaxi.adicionaTaxiDisponivel(this);

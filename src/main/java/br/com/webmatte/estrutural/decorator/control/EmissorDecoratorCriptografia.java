@@ -13,6 +13,7 @@ public class EmissorDecoratorCriptografia extends EmissorDecorator {
         super(emissor);
     }
 
+    @Override
     public void envia(String mensagem) {
         log.info("Enviando mensagem com criptografia ");
         this.getEmissor().envia(criptograva(mensagem));

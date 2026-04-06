@@ -5,6 +5,6 @@ package br.com.webmatte.criacao.prototype.interfaces;
  */
 public interface Prototype<T> {
 
-    T clone();
+    T copy();
 
 }

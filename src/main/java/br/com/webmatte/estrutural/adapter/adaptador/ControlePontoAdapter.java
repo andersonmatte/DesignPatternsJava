@@ -9,7 +9,7 @@ import br.com.webmatte.estrutural.adapter.entity.Funcionario;
  */
 public class ControlePontoAdapter extends ControlePonto {
 
-    public ControlePontoNovo controlePontoNovo = new ControlePontoNovo();
+    private final ControlePontoNovo controlePontoNovo;
 
     public ControlePontoAdapter() {
         this.controlePontoNovo = new ControlePontoNovo();

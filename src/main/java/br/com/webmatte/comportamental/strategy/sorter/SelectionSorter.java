@@ -25,10 +25,9 @@ public class SelectionSorter implements Sorter {
             }
             if (indexMin != i) {
                 aux = list.get(indexMin);
-                list.remove(indexMin);
-                list.add(indexMin, list.get(i));
-                list.remove(i);
-                list.add(i, aux);
+                T temp = list.get(i);
+                list.set(indexMin, temp);
+                list.set(i, aux);
             }
         }
         return list;
