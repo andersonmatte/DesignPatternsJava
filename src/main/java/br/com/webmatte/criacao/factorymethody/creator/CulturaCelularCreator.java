@@ -12,6 +12,19 @@ public class CulturaCelularCreator {
     public static final int BACTERIANA = 0;
     public static final int ANIMAL = 1;
 
+    public static CulturaCelular criarCultura(String tipo) {
+        CulturaCelularCreator creator = new CulturaCelularCreator();
+
+        switch (tipo.toLowerCase()) {
+            case "bacteriana":
+                return creator.criar(BACTERIANA);
+            case "animal":
+                return creator.criar(ANIMAL);
+            default:
+                throw new IllegalArgumentException("Tipo de cultura celular inválido: " + tipo);
+        }
+    }
+
     public CulturaCelular criar(int tipoCultura) {
 
         if (tipoCultura == BACTERIANA) {

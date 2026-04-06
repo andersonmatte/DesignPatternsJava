@@ -11,6 +11,7 @@ public class SistemaRegistroMedico {
     private static SistemaRegistroMedico instance;
     private Map<String, String> configuracoes;
     private boolean sistemaAtivo;
+    private Map<String, String> pacientes;
 
     private SistemaRegistroMedico() {
         this.configuracoes = new HashMap<>();
@@ -19,6 +20,7 @@ public class SistemaRegistroMedico {
         this.configuracoes.put("versao-sistema", "2.1.0");
         this.configuracoes.put("banco-dados", "PostgreSQL-BioMed");
         this.sistemaAtivo = true;
+        this.pacientes = new HashMap<>();
     }
 
     public static SistemaRegistroMedico getInstance() {
@@ -45,6 +47,18 @@ public class SistemaRegistroMedico {
     public void desativarSistema() {
         this.sistemaAtivo = false;
         System.out.println("Sistema de Registro Médico desativado");
+    }
+
+    public void adicionarPaciente(String nomePaciente) {
+        this.pacientes.put(nomePaciente, "Paciente registrado");
+    }
+
+    public int getTotalPacientes() {
+        return this.pacientes.size();
+    }
+
+    public boolean buscarPaciente(String nomePaciente) {
+        return this.pacientes.containsKey(nomePaciente);
     }
 
 }

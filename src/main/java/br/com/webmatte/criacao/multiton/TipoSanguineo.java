@@ -1,71 +1,84 @@
 package br.com.webmatte.criacao.multiton;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Anderson Matte
  */
-@Getter
-@Setter
 public class TipoSanguineo {
 
-    public static final String TIPO_A = "A";
-    public static final String TIPO_B = "B";
-    public static final String TIPO_AB = "AB";
-    public static final String TIPO_O = "O";
+    public static final String TIPO_A_POSITIVO = "A+";
+    public static final String TIPO_A_NEGATIVO = "A-";
+    public static final String TIPO_B_POSITIVO = "B+";
+    public static final String TIPO_B_NEGATIVO = "B-";
+    public static final String TIPO_AB_POSITIVO = "AB+";
+    public static final String TIPO_AB_NEGATIVO = "AB-";
+    public static final String TIPO_O_POSITIVO = "O+";
+    public static final String TIPO_O_NEGATIVO = "O-";
 
     private static Map<String, TipoSanguineo> tiposSanguineos = new HashMap<>();
+    private static int totalInstancias = 0;
 
     static {
-        TipoSanguineo tipoA = new TipoSanguineo();
-        tipoA.setNome(TipoSanguineo.TIPO_A);
-        tipoA.setFatorRhPositivo(true);
-        tipoA.setFatorRhNegativo(true);
-        tipoA.setDoadoresPossiveis("A+, A-, O+, O-");
-        tipoA.setReceptoresPossiveis("A+, AB+");
-        tiposSanguineos.put(tipoA.getNome(), tipoA);
+        TipoSanguineo tipoAPositivo = new TipoSanguineo(TipoSanguineo.TIPO_A_POSITIVO);
+        tiposSanguineos.put(tipoAPositivo.getTipo(), tipoAPositivo);
 
-        TipoSanguineo tipoB = new TipoSanguineo();
-        tipoB.setNome(TipoSanguineo.TIPO_B);
-        tipoB.setFatorRhPositivo(true);
-        tipoB.setFatorRhNegativo(true);
-        tipoB.setDoadoresPossiveis("B+, B-, O+, O-");
-        tipoB.setReceptoresPossiveis("B+, AB+");
-        tiposSanguineos.put(tipoB.getNome(), tipoB);
+        TipoSanguineo tipoANegativo = new TipoSanguineo(TipoSanguineo.TIPO_A_NEGATIVO);
+        tiposSanguineos.put(tipoANegativo.getTipo(), tipoANegativo);
 
-        TipoSanguineo tipoAB = new TipoSanguineo();
-        tipoAB.setNome(TipoSanguineo.TIPO_AB);
-        tipoAB.setFatorRhPositivo(true);
-        tipoAB.setFatorRhNegativo(true);
-        tipoAB.setDoadoresPossiveis("AB+, AB-, A+, A-, B+, B-, O+, O-");
-        tipoAB.setReceptoresPossiveis("AB+");
-        tiposSanguineos.put(tipoAB.getNome(), tipoAB);
+        TipoSanguineo tipoBPositivo = new TipoSanguineo(TipoSanguineo.TIPO_B_POSITIVO);
+        tiposSanguineos.put(tipoBPositivo.getTipo(), tipoBPositivo);
 
-        TipoSanguineo tipoO = new TipoSanguineo();
-        tipoO.setNome(TipoSanguineo.TIPO_O);
-        tipoO.setFatorRhPositivo(true);
-        tipoO.setFatorRhNegativo(true);
-        tipoO.setDoadoresPossiveis("O+, O-");
-        tipoO.setReceptoresPossiveis("O+, A+, B+, AB+");
-        tiposSanguineos.put(tipoO.getNome(), tipoO);
+        TipoSanguineo tipoBNegativo = new TipoSanguineo(TipoSanguineo.TIPO_B_NEGATIVO);
+        tiposSanguineos.put(tipoBNegativo.getTipo(), tipoBNegativo);
+
+        TipoSanguineo tipoABPositivo = new TipoSanguineo(TipoSanguineo.TIPO_AB_POSITIVO);
+        tiposSanguineos.put(tipoABPositivo.getTipo(), tipoABPositivo);
+
+        TipoSanguineo tipoABNegativo = new TipoSanguineo(TipoSanguineo.TIPO_AB_NEGATIVO);
+        tiposSanguineos.put(tipoABNegativo.getTipo(), tipoABNegativo);
+
+        TipoSanguineo tipoOPositivo = new TipoSanguineo(TipoSanguineo.TIPO_O_POSITIVO);
+        tiposSanguineos.put(tipoOPositivo.getTipo(), tipoOPositivo);
+
+        TipoSanguineo tipoONegativo = new TipoSanguineo(TipoSanguineo.TIPO_O_NEGATIVO);
+        tiposSanguineos.put(tipoONegativo.getTipo(), tipoONegativo);
     }
 
-    private String nome;
-    private boolean fatorRhPositivo;
-    private boolean fatorRhNegativo;
-    private String doadoresPossiveis;
-    private String receptoresPossiveis;
+    private String tipo;
+    private String informacao;
 
-    private TipoSanguineo() {
-
+    private TipoSanguineo(String tipo) {
+        this.tipo = tipo;
+        this.informacao = "";
+        totalInstancias++;
     }
 
-    public static TipoSanguineo getInstance(String nome) {
-        return TipoSanguineo.tiposSanguineos.get(nome);
+    public static TipoSanguineo getInstance(String tipo) {
+        if (!tiposSanguineos.containsKey(tipo)) {
+            throw new IllegalArgumentException("Tipo sanguíneo inválido: " + tipo);
+        }
+        return tiposSanguineos.get(tipo);
     }
 
+    public static int getTotalInstancias() {
+        return totalInstancias;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public boolean isPositivo() {
+        return tipo.endsWith("+");
+    }
+
+    public String getInformacao() {
+        return informacao;
+    }
+
+    public void setInformacao(String informacao) {
+        this.informacao = informacao;
+    }
 }

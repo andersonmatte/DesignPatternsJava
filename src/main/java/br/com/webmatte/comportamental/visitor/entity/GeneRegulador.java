@@ -1,6 +1,6 @@
 package br.com.webmatte.comportamental.visitor.entity;
 
-import br.com.webmatte.comportamental.visitor.interfaces.AnalisadorGenetico;
+import br.com.webmatte.comportamental.visitor.visitor.AnalisadorMolecular;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,13 +13,14 @@ public class GeneRegulador extends Gene {
 
     private String geneAlvo;
 
-    public GeneRegulador(String nome, String sequencia, String cromossomo, String geneAlvo) {
-        super(nome, sequencia, cromossomo);
-        this.geneAlvo = geneAlvo;
+    public GeneRegulador(String nome, String proteinaCodificada, String sequencia) {
+        super(nome, sequencia, "CHR1");
+        this.geneAlvo = proteinaCodificada;
     }
 
-    public void aceita(AnalisadorGenetico analisadorGenetico) {
-        analisadorGenetico.analisa(this);
+    @Override
+    public void aceitar(AnalisadorMolecular analisador) {
+        analisador.visitaGeneRegulador(this);
     }
 
 }

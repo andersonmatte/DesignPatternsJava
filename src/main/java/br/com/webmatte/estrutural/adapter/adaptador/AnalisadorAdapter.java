@@ -15,6 +15,10 @@ public class AnalisadorAdapter extends AnalisadorSequencias {
         this.analisadorUnificado = new AnalisadorUnificado();
     }
 
+    public AnalisadorAdapter(AnalisadorUnificado analisadorUnificado) {
+        this.analisadorUnificado = analisadorUnificado;
+    }
+
     @Override
     public void analisarFASTA(AmostraBio amostra) {
         this.analisadorUnificado.analisar(amostra, "FASTA");

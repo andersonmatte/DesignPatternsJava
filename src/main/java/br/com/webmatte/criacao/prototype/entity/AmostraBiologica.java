@@ -17,22 +17,34 @@ public class AmostraBiologica implements Prototype<AmostraBiologica> {
 
     private String codigo;
     private String tipo;
+    private String paciente;
     private LocalDate dataColeta;
     private Set<String> marcadoresGeneticos;
     private String condicaoArmazenamento;
 
-    public AmostraBiologica(String codigo, String tipo, LocalDate dataColeta,
+    public AmostraBiologica(String codigo, String tipo, String paciente, String dataColetaStr) {
+        this.codigo = codigo;
+        this.tipo = tipo;
+        this.paciente = paciente;
+        this.dataColeta = LocalDate.parse(dataColetaStr);
+        this.marcadoresGeneticos = new HashSet<>();
+        this.condicaoArmazenamento = "Refrigerado";
+    }
+
+    public AmostraBiologica(String codigo, String tipo, String paciente, LocalDate dataColeta,
                             Set<String> marcadoresGeneticos, String condicaoArmazenamento) {
         this.codigo = codigo;
         this.tipo = tipo;
+        this.paciente = paciente;
         this.dataColeta = dataColeta;
         this.marcadoresGeneticos = marcadoresGeneticos;
         this.condicaoArmazenamento = condicaoArmazenamento;
     }
 
     public AmostraBiologica(AmostraBiologica other) {
-        this.codigo = other.codigo + "_CLONE";
+        this.codigo = other.codigo;
         this.tipo = other.tipo;
+        this.paciente = other.paciente;
         this.dataColeta = other.dataColeta;
         this.marcadoresGeneticos = new HashSet<>(other.marcadoresGeneticos); // Deep copy
         this.condicaoArmazenamento = other.condicaoArmazenamento;
@@ -40,6 +52,14 @@ public class AmostraBiologica implements Prototype<AmostraBiologica> {
 
     public static AmostraBiologica copyOf(AmostraBiologica other) {
         return new AmostraBiologica(other);
+    }
+
+    public String getDataColeta() {
+        return dataColeta.toString();
+    }
+
+    public void setDataColeta(String dataColetaStr) {
+        this.dataColeta = LocalDate.parse(dataColetaStr);
     }
 
     @Override

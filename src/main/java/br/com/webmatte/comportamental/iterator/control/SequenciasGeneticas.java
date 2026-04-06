@@ -2,8 +2,6 @@ package br.com.webmatte.comportamental.iterator.control;
 
 import br.com.webmatte.comportamental.iterator.interfaces.Iterable;
 
-import java.util.Iterator;
-
 /**
  * @author Anderson Matte
  */
@@ -18,23 +16,13 @@ public class SequenciasGeneticas implements Iterable<String> {
     }
 
     @Override
-    public Iterator<String> iterator() {
+    public br.com.webmatte.comportamental.iterator.interfaces.Iterator<String> criarIterator() {
         return this.new SequenciasGeneticasIterator();
     }
 
-    private class SequenciasGeneticasIterator implements Iterator<String> {
+    private class SequenciasGeneticasIterator implements br.com.webmatte.comportamental.iterator.interfaces.Iterator<String> {
 
         private int i = 0;
-
-        @Override
-        public void remove() {
-            SequenciasGeneticas.this.sequencias[i] = null;
-
-            for (int j = i; (j + i) < SequenciasGeneticas.this.length; j++) {
-                SequenciasGeneticas.this.sequencias[j] = SequenciasGeneticas.this.sequencias[j + 1];
-            }
-            SequenciasGeneticas.this.length--;
-        }
 
         @Override
         public boolean hasNext() {

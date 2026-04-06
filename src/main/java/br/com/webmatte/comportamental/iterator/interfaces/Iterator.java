@@ -3,8 +3,9 @@ package br.com.webmatte.comportamental.iterator.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Iterable<E> {
+public interface Iterator<E> {
 
-    Iterator<E> criarIterator();
+    boolean hasNext();
 
+    E next();
 }

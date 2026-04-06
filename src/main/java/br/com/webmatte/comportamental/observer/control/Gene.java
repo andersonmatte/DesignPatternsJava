@@ -17,8 +17,15 @@ public class Gene {
     private String codigo;
     private String sequencia;
     private String tipoMutacao;
+    private Mutacao ultimaMutacao;
 
     private Set<AcaoObserver> observadores = new HashSet<>();
+
+    public Gene(String codigo) {
+        this.codigo = codigo;
+        this.sequencia = "";
+        this.tipoMutacao = "";
+    }
 
     public Gene(String codigo, String sequencia, String tipoMutacao) {
         this.codigo = codigo;
@@ -26,12 +33,26 @@ public class Gene {
         this.tipoMutacao = tipoMutacao;
     }
 
-    public void registraObservador(AcaoObserver observador) {
+    public void adicionarObservador(AcaoObserver observador) {
         this.observadores.add(observador);
     }
 
-    public void cancelaObservador(AcaoObserver observador) {
+    public void removerObservador(AcaoObserver observador) {
         this.observadores.remove(observador);
+    }
+
+    public int getTotalObservadores() {
+        return this.observadores.size();
+    }
+
+    public void detectarMutacao(String tipoMutacao, String posicao) {
+        this.tipoMutacao = tipoMutacao;
+        this.sequencia = posicao;
+        this.ultimaMutacao = new Mutacao(tipoMutacao, posicao);
+
+        for (AcaoObserver observador : this.observadores) {
+            observador.notificaAlteracao(this);
+        }
     }
 
     public void setTipoMutacao(String novoTipoMutacao) {

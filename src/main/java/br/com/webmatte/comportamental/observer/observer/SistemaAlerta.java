@@ -1,5 +1,6 @@
-package br.com.webmatte.comportamental.observer.control;
+package br.com.webmatte.comportamental.observer.observer;
 
+import br.com.webmatte.comportamental.observer.control.Gene;
 import br.com.webmatte.comportamental.observer.interfaces.AcaoObserver;
 import lombok.extern.slf4j.Slf4j;
 
@@ -10,15 +11,13 @@ import java.util.List;
  * @author Anderson Matte
  */
 @Slf4j
-public class LaboratorioPesquisa implements AcaoObserver {
+public class SistemaAlerta implements AcaoObserver {
 
-    private String nome;
     private boolean notificado;
     private int totalNotificacoes;
     private List<String> notificacoes;
 
-    public LaboratorioPesquisa(String nome) {
-        this.nome = nome;
+    public SistemaAlerta() {
         this.notificado = false;
         this.totalNotificacoes = 0;
         this.notificacoes = new ArrayList<>();
@@ -26,13 +25,13 @@ public class LaboratorioPesquisa implements AcaoObserver {
 
     @Override
     public void notificaAlteracao(Gene gene) {
-        log.info("Laboratório {} sendo notificado: ", this.nome);
-        log.info("O gene " + gene.getCodigo() + " teve sua mutação alterada para " + gene.getTipoMutacao());
+        log.info("SISTEMA DE ALERTA: Mutação detectada no gene " + gene.getCodigo());
+        log.info("Tipo de mutação: " + gene.getTipoMutacao());
         log.info("Sequência afetada: " + gene.getSequencia());
 
         this.notificado = true;
         this.totalNotificacoes++;
-        this.notificacoes.add(String.format("Gene %s mutado para %s na posição %s",
+        this.notificacoes.add(String.format("ALERTA: Gene %s mutado para %s na posição %s",
                 gene.getCodigo(), gene.getTipoMutacao(), gene.getSequencia()));
     }
 

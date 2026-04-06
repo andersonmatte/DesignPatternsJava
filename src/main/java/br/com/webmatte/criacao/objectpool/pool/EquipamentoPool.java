@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class EquipamentoPool implements Pool<EquipamentoLaboratorial> {
 
+    private final Object lock = new Object();
     private List<EquipamentoLaboratorial> equipamentosDisponiveis;
 
     public EquipamentoPool() {
@@ -24,20 +25,43 @@ public class EquipamentoPool implements Pool<EquipamentoLaboratorial> {
 
     @Override
     public EquipamentoLaboratorial acquire() {
-        if (!this.equipamentosDisponiveis.isEmpty()) {
-            EquipamentoLaboratorial equipamento = this.equipamentosDisponiveis.remove(0);
-            equipamento.setEmUso(true);
-            return equipamento;
-        } else {
-            return null;
+        synchronized (lock) {
+            if (!this.equipamentosDisponiveis.isEmpty()) {
+                EquipamentoLaboratorial equipamento = this.equipamentosDisponiveis.remove(0);
+                equipamento.setEmUso(true);
+                return equipamento;
+            } else {
+                return null;
+            }
         }
+    }
+
+    public EquipamentoLaboratorial adquirirEquipamento() throws InterruptedException {
+        EquipamentoLaboratorial equipamento = acquire();
+        while (equipamento == null) {
+            Thread.sleep(50); // Wait and retry
+            equipamento = acquire();
+        }
+        return equipamento;
     }
 
     @Override
     public void release(EquipamentoLaboratorial equipamento) {
-        if (equipamento != null) {
-            equipamento.setEmUso(false);
-            this.equipamentosDisponiveis.add(equipamento);
+        synchronized (lock) {
+            if (equipamento != null) {
+                equipamento.setEmUso(false);
+                this.equipamentosDisponiveis.add(equipamento);
+            }
+        }
+    }
+
+    public void liberarEquipamento(EquipamentoLaboratorial equipamento) {
+        release(equipamento);
+    }
+
+    public int getEquipamentosDisponiveis() {
+        synchronized (lock) {
+            return this.equipamentosDisponiveis.size();
         }
     }
 }

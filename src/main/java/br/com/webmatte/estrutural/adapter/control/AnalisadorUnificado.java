@@ -12,17 +12,20 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 public class AnalisadorUnificado {
 
-    public void analisar(AmostraBio amostra, String formato) {
+    public boolean analisar(AmostraBio amostra, String formato) {
         if ("FASTA".equalsIgnoreCase(formato)) {
             log.info("Analisando amostra FASTA: " + amostra.getCodigo());
             log.info("Sequência: " + amostra.getSequenciaDNA());
             log.info("Formato: FASTA - Inicia com '>'");
+            return true;
         } else if ("GENBANK".equalsIgnoreCase(formato)) {
             log.info("Analisando amostra GenBank: " + amostra.getCodigo());
             log.info("Sequência: " + amostra.getSequenciaDNA());
             log.info("Formato: GenBank - Contém metadados estruturados");
+            return true;
         } else {
             log.warn("Formato não suportado: " + formato);
+            return false;
         }
     }
 
