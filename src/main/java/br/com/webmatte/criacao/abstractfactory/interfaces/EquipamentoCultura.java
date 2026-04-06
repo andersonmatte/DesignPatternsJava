@@ -3,7 +3,8 @@ package br.com.webmatte.criacao.abstractfactory.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Emissor {
+public interface EquipamentoCultura {
 
-    Boolean enviaMensagem(String mensagem);
+    String cultivarCelulas(String tipoCelula);
+
 }

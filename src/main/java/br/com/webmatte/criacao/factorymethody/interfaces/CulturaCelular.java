@@ -3,8 +3,8 @@ package br.com.webmatte.criacao.factorymethody.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Emissor {
+public interface CulturaCelular {
 
-    void enviarMensagem(String mensagem);
+    String cultivar(String meioCultura);
 
 }

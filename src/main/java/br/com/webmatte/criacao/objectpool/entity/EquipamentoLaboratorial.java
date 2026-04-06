@@ -8,12 +8,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Sala {
+public class EquipamentoLaboratorial {
 
     private String nome;
+    private boolean emUso;
 
-    public Sala(String nome) {
+    public EquipamentoLaboratorial(String nome) {
         this.nome = nome;
+        this.emUso = false;
     }
 
 }

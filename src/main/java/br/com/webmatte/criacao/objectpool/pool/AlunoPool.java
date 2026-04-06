@@ -1,6 +1,6 @@
 package br.com.webmatte.criacao.objectpool.pool;
 
-import br.com.webmatte.criacao.objectpool.entity.Aluno;
+import br.com.webmatte.criacao.objectpool.entity.EquipamentoLaboratorial;
 import br.com.webmatte.criacao.objectpool.interfaces.Pool;
 
 import java.util.ArrayList;
@@ -9,28 +9,35 @@ import java.util.List;
 /**
  * @author Anderson Matte
  */
-public class AlunoPool implements Pool<Aluno> {
+public class EquipamentoPool implements Pool<EquipamentoLaboratorial> {
 
-    private List<Aluno> alunos;
+    private List<EquipamentoLaboratorial> equipamentosDisponiveis;
 
-    public AlunoPool() {
-        this.alunos = new ArrayList<>();
-        this.alunos.add(new Aluno("Anderson Matte"));
-        this.alunos.add(new Aluno("Alicia Mendes"));
-        this.alunos.add(new Aluno("Juliana Chaves"));
+    public EquipamentoPool() {
+        this.equipamentosDisponiveis = new ArrayList<>();
+        this.equipamentosDisponiveis.add(new EquipamentoLaboratorial("Microscópio Eletrônico"));
+        this.equipamentosDisponiveis.add(new EquipamentoLaboratorial("Centrífuga"));
+        this.equipamentosDisponiveis.add(new EquipamentoLaboratorial("Espectrômetro de Massa"));
+        this.equipamentosDisponiveis.add(new EquipamentoLaboratorial("Termociclador"));
+        this.equipamentosDisponiveis.add(new EquipamentoLaboratorial("Incubadora CO₂"));
     }
 
     @Override
-    public Aluno acquire() {
-        if (!this.alunos.isEmpty()) {
-            return this.alunos.remove(0);
+    public EquipamentoLaboratorial acquire() {
+        if (!this.equipamentosDisponiveis.isEmpty()) {
+            EquipamentoLaboratorial equipamento = this.equipamentosDisponiveis.remove(0);
+            equipamento.setEmUso(true);
+            return equipamento;
         } else {
             return null;
         }
     }
 
     @Override
-    public void release(Aluno aluno) {
-        this.alunos.add(aluno);
+    public void release(EquipamentoLaboratorial equipamento) {
+        if (equipamento != null) {
+            equipamento.setEmUso(false);
+            this.equipamentosDisponiveis.add(equipamento);
+        }
     }
 }

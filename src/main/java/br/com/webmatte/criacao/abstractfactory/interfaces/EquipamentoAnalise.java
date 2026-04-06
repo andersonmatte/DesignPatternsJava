@@ -3,8 +3,8 @@ package br.com.webmatte.criacao.abstractfactory.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Receptor {
+public interface EquipamentoAnalise {
 
-    String recebeBandeiraCartao();
+    String realizarAnalise(String amostra);
 
 }
