@@ -1,6 +1,6 @@
 package br.com.webmatte.comportamental.mediator.entity;
 
-import br.com.webmatte.comportamental.mediator.control.CentralTaxi;
+import br.com.webmatte.comportamental.mediator.control.CoordenadorAnaliseGenomica;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,26 +11,26 @@ import java.util.Random;
  */
 @Getter
 @Setter
-public class Taxi {
+public class AnalisadorSequencia {
 
     private static final Random random = new Random();
     private static int contador = 0;
-    private CentralTaxi centralTaxi;
+    private CoordenadorAnaliseGenomica coordenador;
     private Integer id;
 
-    public Taxi(CentralTaxi centralTaxi, Integer id) {
-        this.centralTaxi = centralTaxi;
+    public AnalisadorSequencia(CoordenadorAnaliseGenomica coordenador, Integer id) {
+        this.coordenador = coordenador;
         this.id = id;
     }
 
-    public void atendePassageiro() {
+    public void analisaAmostra() {
         try {
             Thread.sleep(random.nextInt(3000));
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             e.printStackTrace();
         }
-        this.centralTaxi.adicionaTaxiDisponivel(this);
+        this.coordenador.adicionaAnalisadorDisponivel(this);
     }
 
 }
