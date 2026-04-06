@@ -3,8 +3,8 @@ package br.com.webmatte.estrutural.bridge.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Documento {
+public interface AnaliseBioinformatica {
 
-    void gerarArquivo();
+    void executarAnalise();
 
 }

@@ -3,8 +3,8 @@ package br.com.webmatte.estrutural.bridge.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface GeradorDeArquivo {
+public interface AlgoritmoProcessamento {
 
-    void gerar(String conteudo);
+    void processarDados(String dados);
 
 }

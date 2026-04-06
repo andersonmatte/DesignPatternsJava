@@ -3,8 +3,8 @@ package br.com.webmatte.estrutural.decorator.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Emissor {
+public interface AnaliseBio {
 
-    void envia(String mensagem);
+    void executarAnalise(String amostra);
 
 }

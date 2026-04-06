@@ -3,8 +3,10 @@ package br.com.webmatte.estrutural.composite.interfaces;
 /**
  * @author Anderson Matte
  */
-public interface Trecho {
+public interface ComponenteSequencia {
 
-    void imprimir();
+    void exibirSequencia();
+
+    int getTamanho();
 
 }
