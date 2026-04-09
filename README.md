@@ -1,6 +1,6 @@
 # Design Patterns em Java - Sistema de Bioinformática
 
-![alt text](https://github.com/andersonmatte/DesingPatternsJava/blob/main/java.png)
+![alt text](https://github.com/andersonmatte/DesingPatternsJava/blob/main/javabio.png)
 
 Este projeto demonstra a implementação de padrões de projeto (Design Patterns) em Java, aplicados a um sistema de
 bioinformática para análise genômica e proteômica.
@@ -458,6 +458,27 @@ analiseGenomica.
 
 executarAnaliseCompleta();
 // Resultado: Preparar → Extrair → Analisar Específico → Finalizar
+```
+
+### Strategy
+
+**Propósito:** Definir família de algoritmos, encapsular cada um e torná-los intercambiáveis.
+
+**Implementação:** Algoritmos de alinhamento de sequências genéticas:
+
+- **Alinhamento Global:** Needleman-Wunsch para sequências completas
+- **Alinhamento Local:** Smith-Waterman para melhores subsequências
+- **Contexto:** Análise bioinformática com algoritmo selecionável
+- **Intercambiabilidade:** Troca dinâmica de estratégias
+
+```java
+// Exemplo: Seleção dinâmica de algoritmo de alinhamento
+AnaliseBioinformatica analise = new AnaliseBioinformatica();
+analise.setAlgoritmo(new AlgoritmoAlinhamentoGlobal());
+analise.executarAlinhamento("ATCG", "ATGG"); // Usa alinhamento global
+
+analise.setAlgoritmo(new AlgoritmoAlinhamentoLocal());
+analise.executarAlinhamento("ATCG", "ATGG"); // Usa alinhamento local
 ```
 
 ### Visitor
