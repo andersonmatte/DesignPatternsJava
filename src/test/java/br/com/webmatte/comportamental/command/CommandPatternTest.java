@@ -2,7 +2,6 @@ package br.com.webmatte.comportamental.command;
 
 import br.com.webmatte.comportamental.command.commands.SequenciarGene;
 import br.com.webmatte.comportamental.command.control.SequenciadorDNA;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,13 +17,6 @@ class CommandPatternTest {
 
     @Mock
     private SequenciadorDNA sequenciadorDNA;
-
-    private SequenciarGene comando;
-
-    @BeforeEach
-    void setUp() {
-        comando = new SequenciarGene(sequenciadorDNA, "GENE_001");
-    }
 
     @Test
     @DisplayName("Deve executar comando de sequenciamento com sucesso")

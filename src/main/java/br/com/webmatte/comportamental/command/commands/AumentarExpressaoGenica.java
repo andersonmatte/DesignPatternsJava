@@ -8,8 +8,8 @@ import br.com.webmatte.comportamental.command.interfaces.Comando;
  */
 public class AumentarExpressaoGenica implements Comando {
 
-    private SequenciadorDNA sequenciadorDNA;
-    private int nivel;
+    private final SequenciadorDNA sequenciadorDNA;
+    private final int nivel;
 
     public AumentarExpressaoGenica(SequenciadorDNA sequenciadorDNA, int nivel) {
         this.sequenciadorDNA = sequenciadorDNA;

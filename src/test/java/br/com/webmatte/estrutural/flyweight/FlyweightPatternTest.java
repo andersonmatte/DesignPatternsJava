@@ -82,8 +82,4 @@ class FlyweightPatternTest {
         });
     }
 
-    private String capturarOutput() {
-        // Implementação simplificada para capturar output
-        return "OUTPUT_CAPTURADO";
-    }
 }

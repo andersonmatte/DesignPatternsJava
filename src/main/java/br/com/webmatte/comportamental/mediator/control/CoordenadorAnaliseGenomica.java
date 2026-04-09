@@ -15,8 +15,8 @@ import java.util.List;
 @Slf4j
 public class CoordenadorAnaliseGenomica {
 
-    private List<AnalisadorSequencia> analisadoresDisponiveis = new ArrayList<>();
-    private List<AmstraGenetica> amostrasEspera = new ArrayList<>();
+    private final List<AnalisadorSequencia> analisadoresDisponiveis = new ArrayList<>();
+    private final List<AmstraGenetica> amostrasEspera = new ArrayList<>();
 
     @Synchronized
     public void adicionaAnalisadorDisponivel(AnalisadorSequencia analisador) {

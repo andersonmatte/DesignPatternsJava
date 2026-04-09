@@ -7,15 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Anderson Matte
  */
 @Slf4j
-public class Nucleotideo implements ComponenteSequencia {
-
-    private String base;
-    private String posicao;
-
-    public Nucleotideo(String base, String posicao) {
-        this.base = base;
-        this.posicao = posicao;
-    }
+public record Nucleotideo(String base, String posicao) implements ComponenteSequencia {
 
     @Override
     public void exibirSequencia() {
@@ -25,14 +17,6 @@ public class Nucleotideo implements ComponenteSequencia {
     @Override
     public int getTamanho() {
         return 1; // Um nucleotideo tem tamanho 1
-    }
-
-    public String getBase() {
-        return base;
-    }
-
-    public String getPosicao() {
-        return posicao;
     }
 
 }

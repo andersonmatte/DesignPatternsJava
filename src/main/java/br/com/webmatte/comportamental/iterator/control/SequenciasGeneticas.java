@@ -8,7 +8,7 @@ import br.com.webmatte.comportamental.iterator.interfaces.Iterable;
 public class SequenciasGeneticas implements Iterable<String> {
 
     private final String[] sequencias;
-    private int length;
+    private final int length;
 
     public SequenciasGeneticas(String[] sequencias) {
         this.sequencias = sequencias;

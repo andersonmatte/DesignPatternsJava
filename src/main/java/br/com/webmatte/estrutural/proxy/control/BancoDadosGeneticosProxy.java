@@ -9,8 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BancoDadosGeneticosProxy implements BancoDadosGeneticos {
 
-    private BancoDadosGeneticos bancoDadosReal;
-    private String usuarioAtual;
+    private final BancoDadosGeneticos bancoDadosReal;
+    private final String usuarioAtual;
 
     public BancoDadosGeneticosProxy(BancoDadosGeneticos bancoDadosReal, String usuario) {
         this.bancoDadosReal = bancoDadosReal;
@@ -19,8 +19,7 @@ public class BancoDadosGeneticosProxy implements BancoDadosGeneticos {
 
     @Override
     public String buscarSequencia(String codigoAmostra) {
-        log.info("=== PROXY - CONTROLE DE ACESSO ===");
-        log.info("Usuário solicitante: {}", usuarioAtual);
+        logInfoAcesso();
 
         // Verificação de segurança
         if (!bancoDadosReal.verificarAcesso(usuarioAtual)) {
@@ -36,8 +35,7 @@ public class BancoDadosGeneticosProxy implements BancoDadosGeneticos {
 
     @Override
     public void salvarResultado(String codigoAmostra, String resultado) {
-        log.info("=== PROXY - CONTROLE DE ACESSO ===");
-        log.info("Usuário solicitante: {}", usuarioAtual);
+        logInfoAcesso();
 
         // Verificação de segurança
         if (!bancoDadosReal.verificarAcesso(usuarioAtual)) {
@@ -54,6 +52,11 @@ public class BancoDadosGeneticosProxy implements BancoDadosGeneticos {
     public boolean verificarAcesso(String usuario) {
         log.info("Proxy verificando acesso para usuário: {}", usuario);
         return bancoDadosReal.verificarAcesso(usuario);
+    }
+
+    private void logInfoAcesso() {
+        log.info("=== PROXY - CONTROLE DE ACESSO ===");
+        log.info("Usuário solicitante: {}", usuarioAtual);
     }
 
 }

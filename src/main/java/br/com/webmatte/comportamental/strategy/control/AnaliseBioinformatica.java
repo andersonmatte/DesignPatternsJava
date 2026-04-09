@@ -1,17 +1,17 @@
 package br.com.webmatte.comportamental.strategy.control;
 
 import br.com.webmatte.comportamental.strategy.interfaces.AlgoritmoAlinhamento;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Anderson Matte
  */
+@Setter
+@Slf4j
 public class AnaliseBioinformatica {
 
     private AlgoritmoAlinhamento algoritmo;
-
-    public void setAlgoritmo(AlgoritmoAlinhamento algoritmo) {
-        this.algoritmo = algoritmo;
-    }
 
     public void executarAlinhamento(String sequencia1, String sequencia2) {
         if (algoritmo == null) {
@@ -19,6 +19,6 @@ public class AnaliseBioinformatica {
         }
 
         String resultado = algoritmo.alinharSequencias(sequencia1, sequencia2);
-        System.out.println(resultado);
+        log.info(resultado);
     }
 }

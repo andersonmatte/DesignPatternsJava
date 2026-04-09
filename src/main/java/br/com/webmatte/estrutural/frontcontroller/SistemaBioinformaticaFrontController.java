@@ -23,7 +23,7 @@ public class SistemaBioinformaticaFrontController {
             String acao = partesEndpoint.length > 1 ? partesEndpoint[1] : EXECUTAR;
 
             log.info("Módulo: {}", modulo);
-            log.info(ACAO, acao);
+            logAcao(acao);
 
             // Mapeamento de módulos do sistema bioinformático
             switch (modulo.toLowerCase()) {
@@ -52,7 +52,7 @@ public class SistemaBioinformaticaFrontController {
 
     private void processarSequenciamento(String acao, String parametros) {
         log.info("Processando requisição de SEQUENCIAMENTO");
-        log.info(ACAO, acao);
+        logAcao(acao);
 
         switch (acao) {
             case EXECUTAR:
@@ -70,7 +70,7 @@ public class SistemaBioinformaticaFrontController {
 
     private void processarAlinhamento(String acao, String parametros) {
         log.info("Processando requisição de ALINHAMENTO");
-        log.info(ACAO, acao);
+        logAcao(acao);
 
         switch (acao) {
             case EXECUTAR:
@@ -88,7 +88,7 @@ public class SistemaBioinformaticaFrontController {
 
     private void processarAnalise(String acao, String parametros) {
         log.info("Processando requisição de ANÁLISE");
-        log.info(ACAO, acao);
+        logAcao(acao);
 
         switch (acao) {
             case EXECUTAR:
@@ -105,7 +105,7 @@ public class SistemaBioinformaticaFrontController {
 
     private void processarRelatorio(String acao, String parametros) {
         log.info("Processando requisição de RELATÓRIO");
-        log.info(ACAO, acao);
+        logAcao(acao);
 
         switch (acao) {
             case "gerar":
@@ -122,6 +122,10 @@ public class SistemaBioinformaticaFrontController {
     private void processarErro(String mensagem) {
         log.error("ERRO: {}", mensagem);
         log.info("Resposta HTTP 400 - Bad Request");
+    }
+
+    private void logAcao(String acao) {
+        log.info(ACAO, acao);
     }
 
 }

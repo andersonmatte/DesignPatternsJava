@@ -12,8 +12,8 @@ import java.util.Map;
 @Slf4j
 public class BancoDadosGeneticosReal implements BancoDadosGeneticos {
 
-    private Map<String, String> sequencias = new HashMap<>();
-    private Map<String, String> usuariosAutorizados = new HashMap<>();
+    private final Map<String, String> sequencias = new HashMap<>();
+    private final Map<String, String> usuariosAutorizados = new HashMap<>();
 
     public BancoDadosGeneticosReal() {
         // Dados de exemplo

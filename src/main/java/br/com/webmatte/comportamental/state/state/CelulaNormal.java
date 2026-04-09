@@ -8,7 +8,7 @@ import br.com.webmatte.comportamental.state.interfaces.EstadoCelular;
  */
 public class CelulaNormal implements EstadoCelular {
 
-    private Celula celula;
+    private final Celula celula;
 
     public CelulaNormal(Celula celula) {
         this.celula = celula;

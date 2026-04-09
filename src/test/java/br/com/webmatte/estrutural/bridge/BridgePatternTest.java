@@ -109,8 +109,4 @@ class BridgePatternTest {
         assertDoesNotThrow(() -> analise.executarAnalise(dadosComplexos));
     }
 
-    private String capturarOutput() {
-        // Implementação simplificada para capturar output
-        return "OUTPUT_CAPTURADO";
-    }
 }

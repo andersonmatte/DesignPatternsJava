@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class AnalisadorMolecular {
 
+    private final List<String> genesAnalisados;
     private StringBuilder resultado;
-    private List<String> genesAnalisados;
 
     public AnalisadorMolecular() {
         this.resultado = new StringBuilder();

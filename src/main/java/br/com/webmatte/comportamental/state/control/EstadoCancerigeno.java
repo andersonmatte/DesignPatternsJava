@@ -1,10 +1,12 @@
 package br.com.webmatte.comportamental.state.control;
 
 import br.com.webmatte.comportamental.state.interfaces.EstadoCelular;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Anderson Matte
  */
+@Slf4j
 public class EstadoCancerigeno implements EstadoCelular {
 
     @Override
@@ -25,7 +27,7 @@ public class EstadoCancerigeno implements EstadoCelular {
 
     @Override
     public void detectarMutacao() {
-        System.out.println("Mutação cancerígena detectada!");
+        log.info("Mutação cancerígena detectada!");
     }
 
     @Override
@@ -35,7 +37,7 @@ public class EstadoCancerigeno implements EstadoCelular {
 
     @Override
     public void aplicarTratamento() {
-        System.out.println("Aplicando tratamento quimioterápico...");
+        log.info("Aplicando tratamento quimioterápico...");
     }
 
     @Override

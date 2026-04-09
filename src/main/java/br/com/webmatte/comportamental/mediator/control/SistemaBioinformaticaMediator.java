@@ -9,8 +9,8 @@ import java.util.List;
 
 public class SistemaBioinformaticaMediator {
 
-    private List<Object> componentes = new ArrayList<>();
-    private List<String> historicoMensagens = new ArrayList<>();
+    private final List<Object> componentes = new ArrayList<>();
+    private final List<String> historicoMensagens = new ArrayList<>();
 
     public void adicionarComponente(Object componente) {
         componentes.add(componente);
@@ -32,12 +32,12 @@ public class SistemaBioinformaticaMediator {
         historicoMensagens.add(mensagem);
 
         for (Object componente : componentes) {
-            if (componente instanceof AnalisadorExpressao && !origem.equals("ANALISADOR")) {
-                ((AnalisadorExpressao) componente).receberMensagem(mensagem, origem);
-            } else if (componente instanceof AlinhadorSequencias && !origem.equals("ALINHADOR")) {
-                ((AlinhadorSequencias) componente).receberMensagem(mensagem, origem);
-            } else if (componente instanceof ValidadorDados && !origem.equals("VALIDADOR")) {
-                ((ValidadorDados) componente).receberMensagem(mensagem, origem);
+            if (componente instanceof AnalisadorExpressao analisador && !origem.equals("ANALISADOR")) {
+                analisador.receberMensagem(mensagem, origem);
+            } else if (componente instanceof AlinhadorSequencias alinhador && !origem.equals("ALINHADOR")) {
+                alinhador.receberMensagem(mensagem, origem);
+            } else if (componente instanceof ValidadorDados validador && !origem.equals("VALIDADOR")) {
+                validador.receberMensagem(mensagem, origem);
             }
         }
     }
@@ -46,12 +46,12 @@ public class SistemaBioinformaticaMediator {
         historicoMensagens.add(mensagem);
 
         for (Object componente : componentes) {
-            if (destino.equals("ANALISADOR") && componente instanceof AnalisadorExpressao) {
-                ((AnalisadorExpressao) componente).receberMensagem(mensagem, origem);
-            } else if (destino.equals("ALINHADOR") && componente instanceof AlinhadorSequencias) {
-                ((AlinhadorSequencias) componente).receberMensagem(mensagem, origem);
-            } else if (destino.equals("VALIDADOR") && componente instanceof ValidadorDados) {
-                ((ValidadorDados) componente).receberMensagem(mensagem, origem);
+            if (destino.equals("ANALISADOR") && componente instanceof AnalisadorExpressao analisador) {
+                analisador.receberMensagem(mensagem, origem);
+            } else if (destino.equals("ALINHADOR") && componente instanceof AlinhadorSequencias alinhador) {
+                alinhador.receberMensagem(mensagem, origem);
+            } else if (destino.equals("VALIDADOR") && componente instanceof ValidadorDados validador) {
+                validador.receberMensagem(mensagem, origem);
             }
         }
     }

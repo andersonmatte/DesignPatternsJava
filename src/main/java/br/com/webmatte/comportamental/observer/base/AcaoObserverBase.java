@@ -1,4 +1,4 @@
-package br.com.webmatte.comportamental.observer.observer;
+package br.com.webmatte.comportamental.observer.base;
 
 import br.com.webmatte.comportamental.observer.control.Gene;
 import br.com.webmatte.comportamental.observer.interfaces.AcaoObserver;
@@ -8,35 +8,36 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Anderson Matte
- */
 @Slf4j
-public class SistemaAlerta implements AcaoObserver {
+public abstract class AcaoObserverBase implements AcaoObserver {
 
-    private final List<String> notificacoes;
     @Getter
-    private boolean notificado;
+    protected boolean notificado;
     @Getter
-    private int totalNotificacoes;
+    protected int totalNotificacoes;
+    protected List<String> notificacoes;
 
-    public SistemaAlerta() {
+    protected AcaoObserverBase() {
         this.notificado = false;
         this.totalNotificacoes = 0;
         this.notificacoes = new ArrayList<>();
     }
 
     @Override
-    public void notificaAlteracao(Gene gene) {
-        log.info("SISTEMA DE ALERTA: Mutação detectada no gene " + gene.getCodigo());
-        log.info("Tipo de mutação: " + gene.getTipoMutacao());
-        log.info("Sequência afetada: " + gene.getSequencia());
+    public final void notificaAlteracao(Gene gene) {
+        log.info(getNotificacaoHeader(), gene.getCodigo());
+        log.info("O gene {} teve sua mutação alterada para {}", gene.getCodigo(), gene.getTipoMutacao());
+        log.info("Sequência afetada: {}", gene.getSequencia());
 
         this.notificado = true;
         this.totalNotificacoes++;
-        this.notificacoes.add(String.format("ALERTA: Gene %s mutado para %s na posição %s",
+        this.notificacoes.add(String.format(getMensagemFormato(),
                 gene.getCodigo(), gene.getTipoMutacao(), gene.getSequencia()));
     }
+
+    protected abstract String getNotificacaoHeader();
+
+    protected abstract String getMensagemFormato();
 
     public String getUltimaNotificacao() {
         if (notificacoes.isEmpty()) {
@@ -44,5 +45,4 @@ public class SistemaAlerta implements AcaoObserver {
         }
         return notificacoes.get(notificacoes.size() - 1);
     }
-
 }

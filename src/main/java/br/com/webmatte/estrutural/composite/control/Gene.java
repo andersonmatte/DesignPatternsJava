@@ -1,16 +1,18 @@
 package br.com.webmatte.estrutural.composite.control;
 
 import br.com.webmatte.estrutural.composite.interfaces.ComponenteSequencia;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Anderson Matte
  */
+@Getter
 @Slf4j
 public class Gene implements ComponenteSequencia {
 
-    private String nome;
-    private String sequencia;
+    private final String nome;
+    private final String sequencia;
 
     public Gene(String nome, String sequencia) {
         this.nome = nome;
@@ -25,14 +27,6 @@ public class Gene implements ComponenteSequencia {
     @Override
     public int getTamanho() {
         return sequencia.length();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getSequencia() {
-        return sequencia;
     }
 
 }

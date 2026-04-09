@@ -3,26 +3,29 @@ package br.com.webmatte.comportamental.visitor.control;
 import br.com.webmatte.comportamental.visitor.entity.GeneProteina;
 import br.com.webmatte.comportamental.visitor.entity.GeneRegulador;
 import br.com.webmatte.comportamental.visitor.interfaces.AnalisadorGenetico;
+import br.com.webmatte.util.LogUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Anderson Matte
  */
+@Slf4j
 public class AnalisadorExpressaoGenica implements AnalisadorGenetico {
 
     @Override
     public void analisa(GeneProteina geneProteina) {
-        System.out.println("Analisando gene de proteína: " + geneProteina.getNome());
-        System.out.println("Proteína codificada: " + geneProteina.getProteinaCodificada());
-        System.out.println("Sequência: " + geneProteina.getSequencia());
-        System.out.println("Análise de expressão gênica: Nível elevado de transcrição detectado");
+        LogUtil.logAnaliseGene(geneProteina.getNome(), "proteína");
+        LogUtil.logProteina(geneProteina.getNome(), geneProteina.getProteinaCodificada());
+        LogUtil.logSequencia("GeneProteina", geneProteina.getSequencia());
+        LogUtil.logResultadoAnalise("expressão gênica", "Nível elevado de transcrição detectado");
     }
 
     @Override
     public void analisa(GeneRegulador geneRegulador) {
-        System.out.println("Analisando gene regulador: " + geneRegulador.getNome());
-        System.out.println("Gene alvo: " + geneRegulador.getGeneAlvo());
-        System.out.println("Sequência: " + geneRegulador.getSequencia());
-        System.out.println("Análise regulatória: Ativação do gene alvo confirmada");
+        LogUtil.logAnaliseGene(geneRegulador.getNome(), "regulador");
+        LogUtil.logGeneRegulador(geneRegulador.getNome(), geneRegulador.getGeneAlvo());
+        LogUtil.logSequencia("GeneRegulador", geneRegulador.getSequencia());
+        LogUtil.logResultadoAnalise("regulatória", "Ativação do gene alvo confirmada");
     }
 
 }

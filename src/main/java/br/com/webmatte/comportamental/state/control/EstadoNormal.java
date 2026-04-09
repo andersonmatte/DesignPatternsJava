@@ -1,10 +1,12 @@
 package br.com.webmatte.comportamental.state.control;
 
 import br.com.webmatte.comportamental.state.interfaces.EstadoCelular;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Anderson Matte
  */
+@Slf4j
 public class EstadoNormal implements EstadoCelular {
 
     @Override
@@ -25,7 +27,7 @@ public class EstadoNormal implements EstadoCelular {
 
     @Override
     public void detectarMutacao() {
-        System.out.println("Monitorando mutações celulares...");
+        log.info("Monitorando mutações celulares...");
     }
 
     @Override
@@ -35,7 +37,7 @@ public class EstadoNormal implements EstadoCelular {
 
     @Override
     public void aplicarTratamento() {
-        System.out.println("Nenhum tratamento necessário - célula saudável");
+        log.info("Nenhum tratamento necessário - célula saudável");
     }
 
     @Override

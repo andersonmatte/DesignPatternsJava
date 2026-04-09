@@ -2,12 +2,16 @@ package br.com.webmatte.comportamental.state.control;
 
 import br.com.webmatte.comportamental.state.interfaces.EstadoCelular;
 import br.com.webmatte.comportamental.state.state.CelulaNormal;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Anderson Matte
  */
+@Getter
 public class Celula {
 
+    @Setter
     private EstadoCelular estado;
     private String id;
 
@@ -17,14 +21,6 @@ public class Celula {
     }
 
     public Celula(EstadoCelular estado) {
-        this.estado = estado;
-    }
-
-    public EstadoCelular getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoCelular estado) {
         this.estado = estado;
     }
 
@@ -56,7 +52,4 @@ public class Celula {
         return estado.divisao();
     }
 
-    public String getId() {
-        return id;
-    }
 }

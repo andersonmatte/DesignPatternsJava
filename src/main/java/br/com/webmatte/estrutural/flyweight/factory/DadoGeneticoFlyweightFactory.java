@@ -15,7 +15,7 @@ public class DadoGeneticoFlyweightFactory {
 
     public static final Class<DadoProteina> DADO_PROTEINA = DadoProteina.class;
 
-    private static Map<Class<? extends DadoGeneticoFlyweight>, DadoGeneticoFlyweight> dados = new HashMap<>();
+    private static final Map<Class<? extends DadoGeneticoFlyweight>, DadoGeneticoFlyweight> dados = new HashMap<>();
 
     private DadoGeneticoFlyweightFactory() {
         /* This utility class should not be instantiated */

@@ -12,7 +12,7 @@ import java.util.List;
 public class EquipamentoPool implements Pool<EquipamentoLaboratorial> {
 
     private final Object lock = new Object();
-    private List<EquipamentoLaboratorial> equipamentosDisponiveis;
+    private final List<EquipamentoLaboratorial> equipamentosDisponiveis;
 
     public EquipamentoPool() {
         this.equipamentosDisponiveis = new ArrayList<>();

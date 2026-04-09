@@ -3,9 +3,6 @@ package br.com.webmatte.estrutural.adapter.control;
 import br.com.webmatte.estrutural.adapter.entity.AmostraBio;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  * @author Anderson Matte
  */
@@ -13,21 +10,17 @@ import java.time.format.DateTimeFormatter;
 public class AnalisadorSequencias {
 
     public void analisarFASTA(AmostraBio amostra) {
-        log.info("Analisando amostra FASTA: " + amostra.getCodigo());
-        log.info("Sequência: " + amostra.getSequenciaDNA());
-        log.info("Formato: FASTA - Inicia com '>'");
+        logAnalise(amostra, "FASTA", "Inicia com '>'");
     }
 
     public void analisarGenBank(AmostraBio amostra) {
-        log.info("Analisando amostra GenBank: " + amostra.getCodigo());
-        log.info("Sequência: " + amostra.getSequenciaDNA());
-        log.info("Formato: GenBank - Contém metadados estruturados");
+        logAnalise(amostra, "GenBank", "Contém metadados estruturados");
     }
 
-    private String getDataAtualFormatada() {
-        LocalDateTime agora = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        return agora.format(formatter);
+    private void logAnalise(AmostraBio amostra, String formato, String descricao) {
+        log.info("Analisando amostra {}: {}", formato, amostra.getCodigo());
+        log.info("Sequência: {}", amostra.getSequenciaDNA());
+        log.info("Formato: {} - {}", formato, descricao);
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class AnaliseGenetica {
 
-    private List<ElementoGenetico> genes;
+    private final List<ElementoGenetico> genes;
 
     public AnaliseGenetica() {
         this.genes = new ArrayList<>();

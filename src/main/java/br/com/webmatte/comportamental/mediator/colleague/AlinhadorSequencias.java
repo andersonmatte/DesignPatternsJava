@@ -1,12 +1,15 @@
 package br.com.webmatte.comportamental.mediator.colleague;
 
 import br.com.webmatte.comportamental.mediator.control.SistemaBioinformaticaMediator;
+import lombok.Getter;
 
 public class AlinhadorSequencias {
 
-    private SistemaBioinformaticaMediator mediator;
+    private final SistemaBioinformaticaMediator mediator;
     private boolean mensagemRecebida = false;
+    @Getter
     private String ultimaMensagemRecebida;
+    @Getter
     private String origemUltimaMensagem;
 
     public AlinhadorSequencias(SistemaBioinformaticaMediator mediator) {
@@ -37,14 +40,6 @@ public class AlinhadorSequencias {
 
     public boolean recebeuMensagem() {
         return mensagemRecebida;
-    }
-
-    public String getUltimaMensagemRecebida() {
-        return ultimaMensagemRecebida;
-    }
-
-    public String getOrigemUltimaMensagem() {
-        return origemUltimaMensagem;
     }
 
     public void reset() {

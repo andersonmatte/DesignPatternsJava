@@ -9,8 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DadoProteina implements DadoGeneticoFlyweight {
 
-    private String nomeProteina;
-    private String sequenciaAminoacidos;
+    private final String nomeProteina;
+    private final String sequenciaAminoacidos;
 
     public DadoProteina() {
         this.nomeProteina = "Hemoglobina";

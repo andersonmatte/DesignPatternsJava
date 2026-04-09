@@ -1,6 +1,5 @@
-package br.com.webmatte.criacao.multiton.test;
+package br.com.webmatte.criacao.multiton;
 
-import br.com.webmatte.criacao.multiton.TipoSanguineo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

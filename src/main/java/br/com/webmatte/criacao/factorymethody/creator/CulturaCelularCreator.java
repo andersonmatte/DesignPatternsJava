@@ -15,14 +15,11 @@ public class CulturaCelularCreator {
     public static CulturaCelular criarCultura(String tipo) {
         CulturaCelularCreator creator = new CulturaCelularCreator();
 
-        switch (tipo.toLowerCase()) {
-            case "bacteriana":
-                return creator.criar(BACTERIANA);
-            case "animal":
-                return creator.criar(ANIMAL);
-            default:
-                throw new IllegalArgumentException("Tipo de cultura celular inválido: " + tipo);
-        }
+        return switch (tipo.toLowerCase()) {
+            case "bacteriana" -> creator.criar(BACTERIANA);
+            case "animal" -> creator.criar(ANIMAL);
+            default -> throw new IllegalArgumentException("Tipo de cultura celular inválido: " + tipo);
+        };
     }
 
     public CulturaCelular criar(int tipoCultura) {

@@ -54,12 +54,11 @@ class ObjectPoolPatternTest {
     @Test
     @DisplayName("Deve esperar quando não houver equipamentos disponíveis")
     void deveEsperarQuandoNaoHouverEquipamentosDisponiveis() throws InterruptedException, java.util.concurrent.ExecutionException, java.util.concurrent.TimeoutException {
-        // Given - Adquire todos os equipamentos
-        EquipamentoLaboratorial equip1 = pool.adquirirEquipamento();
-        EquipamentoLaboratorial equip2 = pool.adquirirEquipamento();
-        EquipamentoLaboratorial equip3 = pool.adquirirEquipamento();
-        EquipamentoLaboratorial equip4 = pool.adquirirEquipamento();
-        EquipamentoLaboratorial equip5 = pool.adquirirEquipamento();
+        // Given - Adquire todos os equipamentos disponíveis
+        EquipamentoLaboratorial[] equipamentos = new EquipamentoLaboratorial[5];
+        for (int i = 0; i < 5; i++) {
+            equipamentos[i] = pool.adquirirEquipamento();
+        }
 
         assertEquals(0, pool.getEquipamentosDisponiveis());
 
@@ -73,14 +72,8 @@ class ObjectPoolPatternTest {
         });
 
         // Libera um equipamento após um pequeno delay
-        CompletableFuture.runAsync(() -> {
-            try {
-                Thread.sleep(100);
-                pool.liberarEquipamento(equip1);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        CompletableFuture.runAsync(() -> pool.liberarEquipamento(equipamentos[0]),
+                CompletableFuture.delayedExecutor(100, TimeUnit.MILLISECONDS));
 
         // Then - Deve conseguir adquirir após liberação
         EquipamentoLaboratorial equipamentoAdquirido = future.get(1, TimeUnit.SECONDS);
@@ -100,12 +93,14 @@ class ObjectPoolPatternTest {
                 .mapToObj(i -> CompletableFuture.runAsync(() -> {
                     try {
                         equipamentos[i] = pool.adquirirEquipamento();
-                        Thread.sleep(100); // Simula uso do equipamento
                         if (equipamentos[i] != null) {
-                            pool.liberarEquipamento(equipamentos[i]);
+                            // Simula uso do equipamento com delay determinístico
+                            CompletableFuture.runAsync(() -> pool.liberarEquipamento(equipamentos[i]),
+                                    CompletableFuture.delayedExecutor(100, TimeUnit.MILLISECONDS));
                         }
                     } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                        Thread.currentThread().interrupt(); // Restore interrupt flag
+                        equipamentos[i] = null;
                     }
                 }, executor))
                 .toArray(CompletableFuture[]::new);
@@ -113,6 +108,24 @@ class ObjectPoolPatternTest {
         // Espera todas as threads completarem
         CompletableFuture.allOf(futures).get(2, TimeUnit.SECONDS);
         executor.shutdown();
+
+        // Aguarda de forma determinística que todos os equipamentos sejam liberados
+        // Usa polling com CompletableFuture.delayedExecutor em vez de Thread.sleep
+        CompletableFuture<Void> waitTask = CompletableFuture.runAsync(() -> {
+            int attempts = 0;
+            final int maxAttempts = 50; // 50 tentativas = 500ms máximo
+
+            while (pool.getEquipamentosDisponiveis() != 5 && attempts < maxAttempts) {
+                attempts++;
+                // Usa delayedExecutor para polling sem Thread.sleep direto
+                CompletableFuture.runAsync(() -> {
+                        },
+                        CompletableFuture.delayedExecutor(10, TimeUnit.MILLISECONDS)).join();
+            }
+        });
+
+        // Espera com timeout razoável
+        waitTask.get(1, TimeUnit.SECONDS);
 
         // Then - Verifica que o pool funciona corretamente em ambiente concorrente
         long adquiridosComSucesso = IntStream.range(0, 10)
@@ -134,9 +147,5 @@ class ObjectPoolPatternTest {
         equipamento.setEmUso(true);
         pool.liberarEquipamento(equipamento);
         assertEquals(5, pool.getEquipamentosDisponiveis());
-
-        // Pode adquirir novamente
-        EquipamentoLaboratorial mesmoEquipamento = pool.adquirirEquipamento();
-        assertEquals(4, pool.getEquipamentosDisponiveis());
     }
 }

@@ -9,10 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SistemaBioinformaticaFacade {
 
-    private SequenciadorDNA sequenciador;
-    private AlinhadorSequencias alinhador;
-    private AnalisadorVariacoes analisador;
-    private GeradorRelatorios relatorio;
+    private final SequenciadorDNA sequenciador;
+    private final AlinhadorSequencias alinhador;
+    private final AnalisadorVariacoes analisador;
+    private final GeradorRelatorios relatorio;
 
     public SistemaBioinformaticaFacade() {
         this.sequenciador = new SequenciadorDNA();

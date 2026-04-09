@@ -1,11 +1,15 @@
 package br.com.webmatte.criacao.multiton;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Anderson Matte
  */
+@Getter
 public class TipoSanguineo {
 
     public static final String TIPO_A_POSITIVO = "A+";
@@ -17,7 +21,8 @@ public class TipoSanguineo {
     public static final String TIPO_O_POSITIVO = "O+";
     public static final String TIPO_O_NEGATIVO = "O-";
 
-    private static Map<String, TipoSanguineo> tiposSanguineos = new HashMap<>();
+    private static final Map<String, TipoSanguineo> tiposSanguineos = new HashMap<>();
+    @Getter
     private static int totalInstancias = 0;
 
     static {
@@ -46,7 +51,8 @@ public class TipoSanguineo {
         tiposSanguineos.put(tipoONegativo.getTipo(), tipoONegativo);
     }
 
-    private String tipo;
+    private final String tipo;
+    @Setter
     private String informacao;
 
     private TipoSanguineo(String tipo) {
@@ -62,23 +68,8 @@ public class TipoSanguineo {
         return tiposSanguineos.get(tipo);
     }
 
-    public static int getTotalInstancias() {
-        return totalInstancias;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
     public boolean isPositivo() {
         return tipo.endsWith("+");
     }
 
-    public String getInformacao() {
-        return informacao;
-    }
-
-    public void setInformacao(String informacao) {
-        this.informacao = informacao;
-    }
 }

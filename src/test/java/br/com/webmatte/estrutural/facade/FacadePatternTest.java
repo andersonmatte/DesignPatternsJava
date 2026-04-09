@@ -17,7 +17,6 @@ class FacadePatternTest {
 
     private SistemaBioinformaticaFacade facade;
     private ByteArrayOutputStream outputStream;
-    private PrintStream originalOut;
 
     @BeforeEach
     void setUp() {
@@ -25,7 +24,6 @@ class FacadePatternTest {
 
         // Captura saída do console para verificação
         outputStream = new ByteArrayOutputStream();
-        originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
     }
 

@@ -78,7 +78,7 @@ public class GeradorDeProtocolo {
 
             @Override
             public Double getVolumeAmostra() {
-                return volume != null ? volume : 10.0;
+                return volume;
             }
 
             @Override

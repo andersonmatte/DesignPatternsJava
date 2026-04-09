@@ -8,16 +8,12 @@ import br.com.webmatte.criacao.abstractfactory.interfaces.EquipamentoLaboratoria
 public class EquipamentoLaboratorialFactory {
 
     public static EquipamentoLaboratorialFactory getFactory(String tipo) {
-        switch (tipo.toLowerCase()) {
-            case "genetica":
-                return new GeneticaFactory();
-            case "bioquimica":
-                return new BioquimicaFactory();
-            case "molecular":
-                return new MolecularFactory();
-            default:
-                throw new IllegalArgumentException("Tipo de laboratório inválido: " + tipo);
-        }
+        return switch (tipo.toLowerCase()) {
+            case "genetica" -> new GeneticaFactory();
+            case "bioquimica" -> new BioquimicaFactory();
+            case "molecular" -> new MolecularFactory();
+            default -> throw new IllegalArgumentException("Tipo de laboratório inválido: " + tipo);
+        };
     }
 
     public EquipamentoLaboratorial criarCentrifuga() {

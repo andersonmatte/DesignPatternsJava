@@ -37,24 +37,15 @@ class FrontControllerPatternTest {
         assertDoesNotThrow(() -> frontController.processarRequisicao(endpoint, parametros));
     }
 
-    @Test
-    @DisplayName("Deve tratar módulo inválido")
-    void deveTratarModuloInvalido() {
-        // Given
-        String endpoint = "modulo_invalido/executar";
-        String parametros = "PARAMETRO";
-
-        // When & Then - Não deve lançar exceção
-        assertDoesNotThrow(() -> frontController.processarRequisicao(endpoint, parametros));
-    }
-
-    @Test
-    @DisplayName("Deve usar ação padrão quando não especificada")
-    void deveUsarAcaoPadraoQuandoNaoEspecificada() {
-        // Given
-        String endpoint = "sequenciamento"; // Sem ação especificada
-        String parametros = "AMOSTRA_001";
-
+    @ParameterizedTest
+    @CsvSource({
+            "'modulo_invalido/executar', 'PARAMETRO', 'Módulo inválido'",
+            "'sequenciamento', 'AMOSTRA_001', 'Ação padrão não especificada'",
+            "'sequenciamento/executar', , 'Parâmetro nulo'",
+            "'sequenciamento/executar', '', 'Parâmetro vazio'"
+    })
+    @DisplayName("Deve tratar casos de borda no processamento de requisições")
+    void deveTratarCasosDeBordaNoProcessamento(String endpoint, String parametros, String descricaoCenario) {
         // When & Then - Não deve lançar exceção
         assertDoesNotThrow(() -> frontController.processarRequisicao(endpoint, parametros));
     }
@@ -83,14 +74,4 @@ class FrontControllerPatternTest {
         }
     }
 
-    @Test
-    @DisplayName("Deve tratar exceções durante processamento")
-    void deveTratarExcecoesDuranteProcessamento() {
-        // Given
-        String endpoint = "sequenciamento/executar";
-        String parametros = null; // Parâmetro nulo para causar exceção
-
-        // When & Then - Não deve lançar exceção
-        assertDoesNotThrow(() -> frontController.processarRequisicao(endpoint, parametros));
-    }
 }

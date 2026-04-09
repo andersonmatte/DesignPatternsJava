@@ -1,17 +1,22 @@
 package br.com.webmatte.criacao.singlenton;
 
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Anderson Matte
  */
+@Slf4j
 public class SistemaRegistroMedico {
 
     private static SistemaRegistroMedico instance;
-    private Map<String, String> configuracoes;
+    private final Map<String, String> configuracoes;
+    private final Map<String, String> pacientes;
+    @Getter
     private boolean sistemaAtivo;
-    private Map<String, String> pacientes;
 
     private SistemaRegistroMedico() {
         this.configuracoes = new HashMap<>();
@@ -35,18 +40,14 @@ public class SistemaRegistroMedico {
     }
 
     public void registrarPaciente(String codigoPaciente, String diagnostico) {
-        System.out.println("Registrando paciente " + codigoPaciente + " com diagnóstico: " + diagnostico);
-        System.out.println("Hospital: " + getConfiguracao("hospital"));
-        System.out.println("Departamento: " + getConfiguracao("departamento"));
-    }
-
-    public boolean isSistemaAtivo() {
-        return sistemaAtivo;
+        log.info("Registrando paciente {} com diagnóstico: {}", codigoPaciente, diagnostico);
+        log.info("Hospital: " + getConfiguracao("hospital"));
+        log.info("Departamento: " + getConfiguracao("departamento"));
     }
 
     public void desativarSistema() {
         this.sistemaAtivo = false;
-        System.out.println("Sistema de Registro Médico desativado");
+        log.info("Sistema de Registro Médico desativado");
     }
 
     public void adicionarPaciente(String nomePaciente) {

@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 public class AnaliseGenomica {
 
-    private List<DadoGeneticoFlyweight> dadosCompartilhados = new ArrayList<>();
+    private final List<DadoGeneticoFlyweight> dadosCompartilhados = new ArrayList<>();
 
     public void adicionarDadoCompartilhado(DadoGeneticoFlyweight dado) {
         dadosCompartilhados.add(dado);

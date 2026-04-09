@@ -9,12 +9,12 @@ import java.time.LocalDate;
  */
 public class ProtocoloGenetica implements ProtocoloExperimental {
 
-    private String nomePesquisador;
-    private String tipoAmostra;
-    private Double volumeAmostra;
-    private LocalDate dataInicio;
-    private Integer duracaoHoras;
-    private String metodoAnalise;
+    private final String nomePesquisador;
+    private final String tipoAmostra;
+    private final Double volumeAmostra;
+    private final LocalDate dataInicio;
+    private final Integer duracaoHoras;
+    private final String metodoAnalise;
 
     public ProtocoloGenetica(String nomePesquisador, String tipoAmostra, Double volumeAmostra,
                              LocalDate dataInicio, Integer duracaoHoras, String metodoAnalise) {
@@ -57,15 +57,13 @@ public class ProtocoloGenetica implements ProtocoloExperimental {
     }
 
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Protocolo de Genética\n");
-        stringBuilder.append("Pesquisador: " + this.nomePesquisador + "\n");
-        stringBuilder.append("Tipo Amostra: " + this.tipoAmostra + "\n");
-        stringBuilder.append("Volume Amostra: " + this.volumeAmostra + " mL\n");
-        stringBuilder.append("Data Início: " + this.dataInicio + "\n");
-        stringBuilder.append("Duração: " + this.duracaoHoras + " horas\n");
-        stringBuilder.append("Método Análise: " + this.metodoAnalise + "\n");
-        return stringBuilder.toString();
+        return "Protocolo de Genética\n" +
+                "Pesquisador: " + this.nomePesquisador + "\n" +
+                "Tipo Amostra: " + this.tipoAmostra + "\n" +
+                "Volume Amostra: " + this.volumeAmostra + " mL\n" +
+                "Data Início: " + this.dataInicio + "\n" +
+                "Duração: " + this.duracaoHoras + " horas\n" +
+                "Método Análise: " + this.metodoAnalise + "\n";
     }
 
 }

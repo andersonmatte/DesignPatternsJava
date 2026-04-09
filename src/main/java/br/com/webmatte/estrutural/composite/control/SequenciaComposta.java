@@ -1,6 +1,7 @@
 package br.com.webmatte.estrutural.composite.control;
 
 import br.com.webmatte.estrutural.composite.interfaces.ComponenteSequencia;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +9,10 @@ import java.util.List;
 /**
  * @author Anderson Matte
  */
+@Slf4j
 public class SequenciaComposta implements ComponenteSequencia {
 
-    private List<ComponenteSequencia> componentes;
+    private final List<ComponenteSequencia> componentes;
 
     public SequenciaComposta() {
         this.componentes = new ArrayList<>();
@@ -26,11 +28,11 @@ public class SequenciaComposta implements ComponenteSequencia {
 
     @Override
     public void exibirSequencia() {
-        System.out.println("Exibindo sequência composta:");
+        log.info("Exibindo sequência composta:");
         for (ComponenteSequencia componente : this.componentes) {
             componente.exibirSequencia();
         }
-        System.out.println("Tamanho total da sequência: " + getTamanho());
+        log.info("Tamanho total da sequência: " + getTamanho());
     }
 
     @Override
